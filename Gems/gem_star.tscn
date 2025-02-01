@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmyl2l0kksyxo"]
+
+[ext_resource type="PackedScene" uid="uid://dn4l0uwuxou3t" path="res://Gems/gem_sphere.tscn" id="1_mp0bt"]
+[ext_resource type="ArrayMesh" uid="uid://djkpeihsyb2to" path="res://Meshes/star.res" id="2_4idc8"]
+
+[node name="Gem" instance=ExtResource("1_mp0bt")]
+
+[node name="mesh" parent="." index="0"]
+transform = Transform3D(34, 0, 0, 0, -1.48619e-06, -34, 0, 34, -1.48619e-06, 0, -2, 0)
+mesh = ExtResource("2_4idc8")

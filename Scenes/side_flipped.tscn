@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://o7da5ms7uaw1"]
+
+[ext_resource type="PackedScene" uid="uid://ctx36oft835ud" path="res://Scenes/side.tscn" id="1_klsai"]
+
+[node name="Side" instance=ExtResource("1_klsai")]
+
+[node name="Board" parent="." index="0"]
+transform = Transform3D(400, 0, 0, 0, 640, 0, 0, 0, 1, 220, -30, 0)
+
+[node name="Character" parent="." index="1"]
+transform = Transform3D(-280, 0, 0, 0, 520, 0, 0, 0, 1, 559.93, -90, 21.839)
+
+[node name="NextGem" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 562.558, 277.745, 59.698)

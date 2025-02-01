@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn4l0uwuxou3t"]
+
+[ext_resource type="ArrayMesh" uid="uid://dd5v07gphq30b" path="res://Meshes/sphere.res" id="1_1xg5s"]
+[ext_resource type="Script" path="res://Gems/gem.gd" id="1_wp0fa"]
+
+[node name="Gem" type="Node3D"]
+script = ExtResource("1_wp0fa")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, 0, 0, 0)
+mesh = ExtResource("1_1xg5s")

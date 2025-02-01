@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://lr7yu638a37u"
-path="res://.godot/imported/Prismancer_bubble_pieces.blend-de0613ab74848f4a6f5f5a70fd4cecfb.scn"
+uid="uid://bu1bl4vcgyl06"
+path="res://.godot/imported/Prismancer_bubble_pieces.blend-c4dcea2d7af2731acc05e4721f2bc501.scn"
 
 [deps]
 
-source_file="res://Art/Prismancer_bubble_pieces.blend"
-dest_files=["res://.godot/imported/Prismancer_bubble_pieces.blend-de0613ab74848f4a6f5f5a70fd4cecfb.scn"]
+source_file="res://Meshes/Prismancer_bubble_pieces.blend"
+dest_files=["res://.godot/imported/Prismancer_bubble_pieces.blend-c4dcea2d7af2731acc05e4721f2bc501.scn"]
 
 [params]
 
@@ -32,6 +32,12 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Gems/gem.tres"
+}
+},
 "meshes": {
 "Prismancer_bubble_pieces_Cone": {
 "generate/lightmap_uv": 0,
@@ -40,7 +46,25 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Art/cone.res"
+"save_to_file/path": "res://Meshes/triangle.res"
+},
+"Prismancer_bubble_pieces_Cube_005": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Meshes/star.res"
+},
+"Prismancer_bubble_pieces_Icosphere_004": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Meshes/sphere.res"
 }
 }
 }

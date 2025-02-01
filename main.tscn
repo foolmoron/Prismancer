@@ -1,27 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://onqxkjnilams"]
+[gd_scene load_steps=7 format=3 uid="uid://onqxkjnilams"]
 
-[ext_resource type="PackedScene" uid="uid://dtqk1p30bjvj0" path="res://Scenes/ui.tscn" id="1_ewtdc"]
+[ext_resource type="PackedScene" uid="uid://ctx36oft835ud" path="res://Scenes/side.tscn" id="2_04fjn"]
+[ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="3_7llx0"]
+[ext_resource type="PackedScene" uid="uid://o7da5ms7uaw1" path="res://Scenes/side_flipped.tscn" id="3_w67uk"]
+[ext_resource type="Texture2D" uid="uid://ce1hk00a71g72" path="res://Art/square.png" id="4_m0n83"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ui61"]
-emission_enabled = true
-emission = Color(0, 0.688557, 0.992178, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1o3uf"]
+render_priority = 0
+shader = ExtResource("3_7llx0")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/tex = ExtResource("4_m0n83")
 
-[sub_resource type="QuadMesh" id="QuadMesh_cyjx5"]
-material = SubResource("StandardMaterial3D_2ui61")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8o2r"]
-emission_enabled = true
-emission = Color(0.992178, 0.642909, 0, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_laji7"]
-material = SubResource("StandardMaterial3D_m8o2r")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lemxy"]
-emission_enabled = true
-emission = Color(0.369982, 0.992178, 0, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_irrae"]
-material = SubResource("StandardMaterial3D_lemxy")
+[sub_resource type="QuadMesh" id="QuadMesh_823pp"]
+material = SubResource("ShaderMaterial_1o3uf")
 
 [node name="Node3D" type="Node3D"]
 
@@ -33,19 +24,10 @@ current = true
 size = 1400.0
 far = 2000.0
 
-[node name="UI" parent="." instance=ExtResource("1_ewtdc")]
+[node name="Side" parent="." instance=ExtResource("2_04fjn")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1400, 0, 0, 0, 700, 0, 0, 0, 1400, 0, 0, -1)
-mesh = SubResource("QuadMesh_cyjx5")
-skeleton = NodePath("../Camera3D")
+[node name="SideFlipped" parent="." instance=ExtResource("3_w67uk")]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(792.547, 0, 0, 0, 286.298, 0, 0, 0, 1400, -238.635, 145.637, 239.191)
-mesh = SubResource("QuadMesh_laji7")
-skeleton = NodePath("../Camera3D")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(671.972, 0, 0, 0, 435.947, 0, 0, 0, 1400, 331.681, -106.199, 19.712)
-mesh = SubResource("QuadMesh_irrae")
-skeleton = NodePath("../Camera3D")
+[node name="Line" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 700, 0, 0, 0, 1, 0, 0, 51.686)
+mesh = SubResource("QuadMesh_823pp")

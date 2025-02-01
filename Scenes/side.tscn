@@ -1,73 +1,88 @@
-[gd_scene format=3 uid="uid://brfq1p2axfptv"]
+[gd_scene load_steps=18 format=3 uid="uid://ctx36oft835ud"]
 
-[node name="Side" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 700.0
-offset_bottom = 700.0
+[ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
+[ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="1_qdd5t"]
+[ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
+[ext_resource type="Script" path="res://Gems/gem_spawn_entry.gd" id="2_lppdi"]
+[ext_resource type="PackedScene" uid="uid://dn4l0uwuxou3t" path="res://Gems/gem_sphere.tscn" id="3_w1g55"]
+[ext_resource type="PackedScene" uid="uid://e7swbw218co0" path="res://Gems/gem_triangle_right.tscn" id="4_fvfng"]
+[ext_resource type="PackedScene" uid="uid://bkykx4vjym2br" path="res://Scenes/column.tscn" id="4_vojst"]
+[ext_resource type="PackedScene" uid="uid://ty677q31p7vy" path="res://Gems/gem_triangle_left.tscn" id="5_0avao"]
+[ext_resource type="PackedScene" uid="uid://cmyl2l0kksyxo" path="res://Gems/gem_star.tscn" id="6_irx0m"]
 
-[node name="bg" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.418536, 0.418536, 0.418536, 1)
+[sub_resource type="Resource" id="Resource_ij545"]
+script = ExtResource("2_lppdi")
+weight = 4
+scene = ExtResource("3_w1g55")
 
-[node name="Board" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -640.0
-grow_horizontal = 0
-grow_vertical = 0
+[sub_resource type="Resource" id="Resource_i44bh"]
+script = ExtResource("2_lppdi")
+weight = 6
+scene = ExtResource("4_fvfng")
 
-[node name="bg" type="ColorRect" parent="Board"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.825537, 0.825537, 1)
+[sub_resource type="Resource" id="Resource_7hfpp"]
+script = ExtResource("2_lppdi")
+weight = 6
+scene = ExtResource("5_0avao")
 
-[node name="Character" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -520.0
-offset_right = 280.0
-grow_vertical = 0
+[sub_resource type="Resource" id="Resource_k651g"]
+script = ExtResource("2_lppdi")
+weight = 1
+scene = ExtResource("6_irx0m")
 
-[node name="bg" type="ColorRect" parent="Character"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.549324, 0.549324, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxw16"]
+render_priority = 0
+shader = ExtResource("1_qdd5t")
+shader_parameter/color = Color(1, 1, 1, 0.254902)
+shader_parameter/tex = ExtResource("2_e6vki")
 
-[node name="Gem" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 82.0
-offset_top = 28.0
-offset_right = 202.0
-offset_bottom = 148.0
+[sub_resource type="QuadMesh" id="QuadMesh_rhpbv"]
+material = SubResource("ShaderMaterial_qxw16")
 
-[node name="bg" type="ColorRect" parent="Gem"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.549324, 0.983329, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pxtq"]
+emission_enabled = true
+emission = Color(0.992178, 0, 0.608783, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6jcq2"]
+material = SubResource("StandardMaterial3D_2pxtq")
+
+[node name="Side" type="Node3D"]
+script = ExtResource("1_317gq")
+gem_spawn_entries = Array[ExtResource("2_lppdi")]([SubResource("Resource_ij545"), SubResource("Resource_i44bh"), SubResource("Resource_7hfpp"), SubResource("Resource_k651g")])
+
+[node name="Board" type="Node3D" parent="."]
+transform = Transform3D(400, 0, 0, 0, 640, 0, 0, 0, 1, -220, -30, 0)
+
+[node name="bg1" type="MeshInstance3D" parent="Board"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_rhpbv")
+
+[node name="Column0" parent="Board" instance=ExtResource("4_vojst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+
+[node name="Column1" parent="Board" instance=ExtResource("4_vojst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+
+[node name="Column2" parent="Board" instance=ExtResource("4_vojst")]
+
+[node name="Column3" parent="Board" instance=ExtResource("4_vojst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+
+[node name="Column4" parent="Board" instance=ExtResource("4_vojst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+
+[node name="Character" type="Node3D" parent="."]
+transform = Transform3D(280, 0, 0, 0, 520, 0, 0, 0, 1, -560, -90, 21.8389)
+
+[node name="bg2" type="MeshInstance3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_6jcq2")
+
+[node name="NextGem" type="Node3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -562.558, 259.193, 59.6978)
+
+[connection signal="input_event" from="Board/Column0" to="." method="_on_column_input_event" binds= [0]]
+[connection signal="input_event" from="Board/Column1" to="." method="_on_column_input_event" binds= [1]]
+[connection signal="input_event" from="Board/Column2" to="." method="_on_column_input_event" binds= [2]]
+[connection signal="input_event" from="Board/Column3" to="." method="_on_column_input_event" binds= [3]]
+[connection signal="input_event" from="Board/Column4" to="." method="_on_column_input_event" binds= [4]]
