@@ -1,15 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://onqxkjnilams"]
+[gd_scene load_steps=8 format=3 uid="uid://onqxkjnilams"]
 
 [ext_resource type="PackedScene" uid="uid://dtqk1p30bjvj0" path="res://Scenes/ui.tscn" id="1_ewtdc"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x0g3e"]
-
-[sub_resource type="Sky" id="Sky_550og"]
-sky_material = SubResource("ProceduralSkyMaterial_x0g3e")
-
-[sub_resource type="Environment" id="Environment_acmw1"]
-background_mode = 2
-sky = SubResource("Sky_550og")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ui61"]
 emission_enabled = true
@@ -35,12 +26,12 @@ material = SubResource("StandardMaterial3D_lemxy")
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1000)
 keep_aspect = 0
-environment = SubResource("Environment_acmw1")
 projection = 1
 current = true
 size = 1400.0
-far = 1000.0
+far = 2000.0
 
 [node name="UI" parent="." instance=ExtResource("1_ewtdc")]
 
@@ -50,11 +41,11 @@ mesh = SubResource("QuadMesh_cyjx5")
 skeleton = NodePath("../Camera3D")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(792.547, 0, 0, 0, 286.298, 0, 0, 0, 1400, -238.635, 145.637, -1)
+transform = Transform3D(792.547, 0, 0, 0, 286.298, 0, 0, 0, 1400, -238.635, 145.637, 239.191)
 mesh = SubResource("QuadMesh_laji7")
 skeleton = NodePath("../Camera3D")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(671.972, 0, 0, 0, 435.947, 0, 0, 0, 1400, 331.681, -106.199, -1)
+transform = Transform3D(671.972, 0, 0, 0, 435.947, 0, 0, 0, 1400, 331.681, -106.199, 19.712)
 mesh = SubResource("QuadMesh_irrae")
 skeleton = NodePath("../Camera3D")
