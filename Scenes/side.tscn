@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://brfq1p2axfptv"]
+
+[node name="Side" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 700.0
+offset_bottom = 700.0
+
+[node name="bg" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.418536, 0.418536, 0.418536, 1)
+
+[node name="Board" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -640.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="bg" type="ColorRect" parent="Board"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.825537, 0.825537, 1)
+
+[node name="Character" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -520.0
+offset_right = 280.0
+grow_vertical = 0
+
+[node name="bg" type="ColorRect" parent="Character"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.549324, 0.549324, 1)
+
+[node name="Gem" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 28.0
+offset_right = 202.0
+offset_bottom = 148.0
+
+[node name="bg" type="ColorRect" parent="Gem"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.549324, 0.983329, 1)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://doitwk807vind"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_f2fb7"]
+rings = 6
+ring_segments = 8
+
+[node name="Gem" type="MeshInstance3D"]
+mesh = SubResource("TorusMesh_f2fb7")
