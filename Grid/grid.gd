@@ -207,16 +207,24 @@ func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary
 					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_LEFT), Cell.DIR.DOWN_LEFT])
 	
 	# count and animate
-	var first := true
+	side.orb.visible = true
+	side.orb.global_position = side.coord_to_global_pos(Vector2i(initial_pos.x, initial_pos.y) - Cell.dir_to_vec(initial_dir))
+	side.orb.global_position.z += 10
 	for cell in cells_to_count:
 		if cell.gem == null:
 			continue
-		if not first:
-			await side.get_tree().create_timer(SURGE_INTERVAL_SECS).timeout
-		first = false
+		
+		side.orb.set_color(cell.color_mask)
+		var orb_pos = cell.gem.global_position
+		orb_pos.z = side.orb.global_position.z
+		var tween := side.get_tree().create_tween()
+		tween.tween_property(side.orb, "global_position", orb_pos, SURGE_INTERVAL_SECS).set_trans(Tween.TRANS_LINEAR)
+		await tween.finished
+
 		count[cell.color_mask] = count.get(cell.color_mask, 0) + 1
 		cell.gem.queue_free()
 		cell.gem = null
+	side.orb.visible = false
 
 	return count
 
@@ -235,7 +243,6 @@ func move_gems() -> void:
 				y_final = _y
 			if y_final != y:
 				cell.gem.global_position = side.coord_to_global_pos(Vector2i(x, y_final))
-				print("moving gem from ", x, ",", y, " to ", x, ",", y_final)
 				var cell2 := cells[to_idx(x, y_final)] as Cell
 				cell2.gem = cell.gem
 				cell.gem = null

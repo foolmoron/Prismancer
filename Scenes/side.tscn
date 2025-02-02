@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=28 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="11_sxmu3"]
 [ext_resource type="PackedScene" uid="uid://dtf5bymgy22yk" path="res://Lines/line_green.tscn" id="12_f1css"]
 [ext_resource type="PackedScene" uid="uid://bou5e8rq6ja6y" path="res://Lines/line_blue.tscn" id="13_hc0mh"]
+[ext_resource type="PackedScene" uid="uid://cmmv7xp3y61bx" path="res://Grid/orb.tscn" id="15_katxw"]
+[ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="16_krc47"]
+[ext_resource type="Texture2D" uid="uid://b6du2yvm8xr1p" path="res://Art/circle_faded.png" id="17_dypse"]
 
 [sub_resource type="Resource" id="Resource_ij545"]
 script = ExtResource("2_lppdi")
@@ -51,6 +54,16 @@ emission = Color(0.992178, 0, 0.608783, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_6jcq2"]
 material = SubResource("StandardMaterial3D_2pxtq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m73i2"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(0.92, 0.1012, 0.251313, 1)
+shader_parameter/tex = ExtResource("17_dypse")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5fgtu"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_m73i2")
 
 [node name="Side" type="Node3D"]
 script = ExtResource("1_317gq")
@@ -174,8 +187,19 @@ transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -220, -270, 5)
 [node name="LineBlue" parent="." instance=ExtResource("13_hc0mh")]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -60, -270, 5)
 
+[node name="Orb" parent="." instance=ExtResource("15_katxw")]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 1, -380, -247.659, 20)
+
+[node name="quadcolor" parent="Orb" index="1"]
+mesh = SubResource("QuadMesh_5fgtu")
+
 [connection signal="input_event" from="Board/Column0" to="." method="_on_column_input_event" binds= [0]]
 [connection signal="input_event" from="Board/Column1" to="." method="_on_column_input_event" binds= [1]]
 [connection signal="input_event" from="Board/Column2" to="." method="_on_column_input_event" binds= [2]]
 [connection signal="input_event" from="Board/Column3" to="." method="_on_column_input_event" binds= [3]]
 [connection signal="input_event" from="Board/Column4" to="." method="_on_column_input_event" binds= [4]]
+[connection signal="input_event" from="BoardLabels/REDBtn" to="." method="_on_surge_input_event" binds= [0]]
+[connection signal="input_event" from="BoardLabels/GRNBtn" to="." method="_on_surge_input_event" binds= [1]]
+[connection signal="input_event" from="BoardLabels/BLUBtn" to="." method="_on_surge_input_event" binds= [2]]
+
+[editable path="Orb"]

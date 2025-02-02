@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://o7da5ms7uaw1"]
+[gd_scene load_steps=6 format=3 uid="uid://o7da5ms7uaw1"]
 
 [ext_resource type="PackedScene" uid="uid://ctx36oft835ud" path="res://Scenes/side.tscn" id="1_klsai"]
+[ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="2_rgghp"]
+[ext_resource type="Texture2D" uid="uid://b6du2yvm8xr1p" path="res://Art/circle_faded.png" id="3_0ebml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m73i2"]
+render_priority = 0
+shader = ExtResource("2_rgghp")
+shader_parameter/color = Color(0.92, 0.1012, 0.251313, 1)
+shader_parameter/tex = ExtResource("3_0ebml")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qtqqp"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_m73i2")
 
 [node name="Side" instance=ExtResource("1_klsai")]
 
@@ -24,3 +36,11 @@ transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 220, -270, 5)
 
 [node name="LineBlue" parent="." index="6"]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 380, -270, 5)
+
+[node name="Orb" parent="." index="7"]
+transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 1, 197.851, -178.951, 20)
+
+[node name="quadcolor" parent="Orb" index="1"]
+mesh = SubResource("QuadMesh_qtqqp")
+
+[editable path="Orb"]

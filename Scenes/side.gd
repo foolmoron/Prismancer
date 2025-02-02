@@ -18,6 +18,8 @@ const GRID_COLUMNS := 5
 const GRID_ROWS := 8
 @onready var grid := Grid.new(GRID_COLUMNS, GRID_ROWS, self)
 
+@onready var orb := $Orb as Orb
+
 var gem_next: Gem
 var surging := false
 
@@ -26,6 +28,8 @@ func _ready() -> void:
 		for i in range(entry.weight):
 			gem_spawns.append(entry.scene)
 		
+	orb.visible = false
+
 	setup_next_gem()
 	grid.refresh()
 

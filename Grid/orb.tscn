@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmmv7xp3y61bx"]
+
+[ext_resource type="Script" path="res://Grid/orb.gd" id="1_56car"]
+[ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="2_q4epe"]
+[ext_resource type="Texture2D" uid="uid://b6du2yvm8xr1p" path="res://Art/circle_faded.png" id="4_ko2pj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dis0m"]
+render_priority = 0
+shader = ExtResource("2_q4epe")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("4_ko2pj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1y7c4"]
+material = SubResource("ShaderMaterial_dis0m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m73i2"]
+render_priority = 0
+shader = ExtResource("2_q4epe")
+shader_parameter/color = Color(0.92, 0.1012, 0.251313, 1)
+shader_parameter/tex = ExtResource("4_ko2pj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xqctu"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_m73i2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vy2d5"]
+render_priority = 0
+shader = ExtResource("2_q4epe")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("4_ko2pj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t42o5"]
+material = SubResource("ShaderMaterial_vy2d5")
+
+[node name="Orb" type="Node3D"]
+script = ExtResource("1_56car")
+
+[node name="quadoutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.18281, 0, 0, 0, 1.18281, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_1y7c4")
+skeleton = NodePath("../..")
+
+[node name="quadcolor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.05519, 0, 0, 0, 1.05519, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = SubResource("QuadMesh_xqctu")
+skeleton = NodePath("../..")
+
+[node name="quadglow" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.491468, 0, 0, 0, 0.491468, 0, 0, 0, 1, 0, 0, 0.2)
+mesh = SubResource("QuadMesh_t42o5")
+skeleton = NodePath("../..")
