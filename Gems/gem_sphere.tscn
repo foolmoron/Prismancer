@@ -1,12 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn4l0uwuxou3t"]
+[gd_scene load_steps=5 format=4 uid="uid://dn4l0uwuxou3t"]
 
-[ext_resource type="ArrayMesh" uid="uid://dd5v07gphq30b" path="res://Meshes/sphere.res" id="1_1xg5s"]
 [ext_resource type="Script" path="res://Gems/gem.gd" id="1_wp0fa"]
+[ext_resource type="Material" uid="uid://g0cgcb63bgbj" path="res://Gems/gem.tres" id="2_1nc3t"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p4b4k"]
+_surfaces = [{
+"aabb": AABB(-1.04389, -1.06073, -0.938088, 2.07231, 2.12146, 1.95618),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("BgAAAAkAAAACAAkACAABAAQABwAKAAEAAAADAAIAAAAEAAMAAQAMAAQACgAFAAEAAgAFAAoAAwAFAAIABAAMAAMADAAFAAMABQAMAAEACwACAAoAAgALAAkACwAKAAkACQAKAAcABwABAAgACAAEAAAABgAJAAcACAAAAAYABgAHAAgA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("1Zp0KcIRAAAAmQKm//8AAMs4j6t3EgAAa7cCpgAAAAD//wKmtIsAAPFq///SaQAA9pYAALOLAACBgMpAiO8AAKXpykBMnwAA6xf8LsN6AAAIEwur774AAAAAiHnDegAA0aqO8/yaAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_26y1p"]
+resource_name = "Prismancer_bubble_pieces_cartoon_shader_Icosphere_004"
+_surfaces = [{
+"aabb": AABB(-1.04389, -1.06073, -0.938088, 2.07231, 2.12146, 1.95618),
+"attribute_data": PackedByteArray("Mo1N3IaSTdzVKMa5cK4dtuyFxrnshca5YVfGuUURd5FCekiRDqZplnPROZuxMafwFl3X6y26//+e7sj1ESOv1///r9ecUa/XKM7i3CndFeLTAwC2oeQAtnPRiMPoIjmb0UU5m7loOZs="),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("DQABABIAAQADABIAEQACAAYADwAUAAIAAQAFAAMAAAAGAAQAAgAYAAYAFAAHAAIAAwAKABUABQAJAAMABgAZAAQAGQAIAAQABwAXAAIAFgADABUAAwAWABIAFgAVABMAEwAVABAADwACABEAEQAGAAAADgATABAAEQAAAAwACwAPABEA"),
+"material": ExtResource("2_1nc3t"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("1Zp0KcIRGe/VmnQpwhHQ/QCZAqb//8OOyziPq3cS1+VrtwKmAAC36mu3AqYAAJjs//8CprSLGr7xav//0mkWxfFq///SaSnr8Wr//9JpOfjxav//0mm32PaWAACzi/G99pYAALOLd9r2lgAAs4ti8PaWAACziyTBgYDKQIjvoJaBgMpAiO+ImKXpykBMn/e46xf8LsN6AtHrF/wuw3oYwQgTC6vvvs6pCBMLq+++A6wAAIh5w3rDw9GqjvP8mjC40aqO8/yaDLnRqo7z/Jrh1D1lHzPukTgwXNW6R1OEZOvemcMNOWuLA4ebqA4C4y2ZEtCyINx7A8JCopm1ETUyYSRlGU4hMS3r2hE3stQgWYEKEq+5gGfNLnZNuPwnRTvJpq+n1u+UZdA7h1T8bNrsdJDVujwMy+oS")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p4b4k")
 
 [node name="Gem" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("1_wp0fa")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(36, 0, 0, 0, 36, 0, 0, 0, 36, 0, 0, 0)
-mesh = ExtResource("1_1xg5s")
+transform = Transform3D(33.4325, 0, 0, 0, 33.4325, 0, 0, 0, 36, 0, 0, 0)
+mesh = SubResource("ArrayMesh_26y1p")

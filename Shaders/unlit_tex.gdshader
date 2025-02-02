@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode unshaded;
 
 uniform sampler2D tex : hint_default_transparent;
 uniform vec4 color : source_color = vec4(1,1,1,1);
@@ -13,7 +14,7 @@ void fragment() {
 		ALPHA = 0.0;
 	} else {
 		vec4 c = texture(tex, UV) * color;
-		EMISSION = c.rgb;
+		ALBEDO = c.rgb;
 		ALPHA = c.a;
 	}
 }

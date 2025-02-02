@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1c2lgs1slfj2"]
+[gd_scene load_steps=9 format=3 uid="uid://d1c2lgs1slfj2"]
 
+[ext_resource type="PackedScene" uid="uid://i5nwtikcqpqi" path="res://Scenes/sun.tscn" id="1_m32gm"]
 [ext_resource type="PackedScene" uid="uid://ctx36oft835ud" path="res://Scenes/side.tscn" id="1_swmvj"]
 [ext_resource type="PackedScene" uid="uid://o7da5ms7uaw1" path="res://Scenes/side_flipped.tscn" id="2_44qxm"]
 [ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="3_wfaqv"]
@@ -16,6 +17,8 @@ shader_parameter/tex = ExtResource("4_fj4sy")
 material = SubResource("ShaderMaterial_6cf0a")
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Sun" parent="." instance=ExtResource("1_m32gm")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1000)

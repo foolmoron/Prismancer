@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=50 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bkykx4vjym2br" path="res://Grid/column.tscn" id="4_vojst"]
 [ext_resource type="PackedScene" uid="uid://ty677q31p7vy" path="res://Gems/gem_triangle_left.tscn" id="5_0avao"]
 [ext_resource type="PackedScene" uid="uid://cmyl2l0kksyxo" path="res://Gems/gem_star.tscn" id="6_irx0m"]
-[ext_resource type="Shader" path="res://Lines/line.gdshader" id="7_fnpvp"]
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="10_aet5l"]
 [ext_resource type="PackedScene" uid="uid://dy6xb74lrk532" path="res://Grid/surge_btn.tscn" id="11_mn6if"]
 [ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="11_sxmu3"]
@@ -49,9 +48,8 @@ scene = ExtResource("6_irx0m")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxw16"]
 render_priority = 0
-shader = ExtResource("7_fnpvp")
+shader = ExtResource("16_krc47")
 shader_parameter/color = Color(1, 1, 1, 0.254902)
-shader_parameter/alpha_boost = 1.8
 shader_parameter/tex = ExtResource("2_e6vki")
 
 [sub_resource type="QuadMesh" id="QuadMesh_rhpbv"]
