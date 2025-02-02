@@ -34,10 +34,6 @@ window/size/viewport_width=1400
 window/size/viewport_height=700
 window/stretch/mode="viewport"
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

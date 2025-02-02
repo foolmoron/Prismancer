@@ -68,7 +68,7 @@ func reset_lines(global_pos: Vector3) -> void:
 			LinePool.release(color, line)
 		arr.clear()
 
-	var line_pool: Array[Node3D]
+	var line_pool: Array
 	match color_mask:
 		COLOR.RED:
 			line_pool = LinePool.red

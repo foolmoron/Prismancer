@@ -8,13 +8,13 @@ extends Node
 @onready var line_cyan: PackedScene = load("res://Lines/line_cyan.tscn")
 @onready var line_white: PackedScene = load("res://Lines/line_white.tscn")
 
-var red: Array[Node3D] = []
-var green: Array[Node3D] = []
-var blue: Array[Node3D] = []
-var yellow: Array[Node3D] = []
-var magenta: Array[Node3D] = []
-var cyan: Array[Node3D] = []
-var white: Array[Node3D] = []
+var red: Array = []
+var green: Array = []
+var blue: Array = []
+var yellow: Array = []
+var magenta: Array = []
+var cyan: Array = []
+var white: Array = []
 
 func obtain(color: Cell.COLOR, parent: Node3D) -> Node3D:
 	var line: Node3D

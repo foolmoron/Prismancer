@@ -26,14 +26,31 @@ func refresh() -> void:
 	for c in cells:
 		c.reset_masks()
 
+	# mark all out directions
 	_process_cells_for_dir(Cell.DIR.UP, Vector2i(0, 0))
 	_process_cells_for_dir(Cell.DIR.UP, Vector2i(2, 0))
 	_process_cells_for_dir(Cell.DIR.UP, Vector2i(4, 0))
 
+	# clean up out directions on edges
+	var no_left := ~(Cell.DIR.LEFT | Cell.DIR.UP_LEFT | Cell.DIR.DOWN_LEFT)
+	for y in range(rows):
+		cells[to_idx(0, y)].out_mask &= no_left
+	var no_right := ~(Cell.DIR.RIGHT | Cell.DIR.UP_RIGHT | Cell.DIR.DOWN_RIGHT)
+	for y in range(rows):
+		cells[to_idx(columns - 1, y)].out_mask &= no_right
+	var no_up := ~(Cell.DIR.UP | Cell.DIR.UP_LEFT | Cell.DIR.UP_RIGHT)
+	for x in range(columns):
+		cells[to_idx(x, rows - 1)].out_mask &= no_up
+	var no_down := ~(Cell.DIR.DOWN | Cell.DIR.DOWN_LEFT | Cell.DIR.DOWN_RIGHT)
+	for x in range(columns):
+		cells[to_idx(x, 0)].out_mask &= no_down
+
+	# mark colors
 	_process_cells_with_color(Cell.COLOR.RED, Vector2i(0, 0))
 	_process_cells_with_color(Cell.COLOR.GREEN, Vector2i(2, 0))
 	_process_cells_with_color(Cell.COLOR.BLUE, Vector2i(4, 0))
 
+	# set lines based on out directions and colors
 	for y in range(rows):
 		for x in range(columns):
 			cells[to_idx(x, y)].reset_lines(side.coord_to_global_pos(Vector2i(x, y)))
