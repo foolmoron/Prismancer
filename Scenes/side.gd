@@ -9,7 +9,7 @@ static var P2_ACTIONS := ["p2_0", "p2_1", "p2_2", "p2_3", "p2_4"]
 var gem_spawns : Array[PackedScene] = []
 
 @onready var board := $Board as Node3D
-@onready var origin := board.global_transform.origin - Vector3(board.scale.x / 2, board.scale.y / 2, 0)
+@onready var origin := board.global_transform.origin - to_global(Vector3(board.scale.x / 2, board.scale.y / 2, 0))
 const GRID_SIZE := 80.0
 
 const GRID_COLUMNS := 5
@@ -58,4 +58,4 @@ func do_column(column_idx: int) -> void:
 	grid.refresh()
 
 func coord_to_global_pos(coord: Vector2i) -> Vector3:
-	return origin + Vector3(GRID_SIZE / 2, GRID_SIZE / 2, 0) + Vector3(coord.x * GRID_SIZE, coord.y * GRID_SIZE, 10.0)
+	return origin + to_global(Vector3(GRID_SIZE / 2, GRID_SIZE / 2, 0) + Vector3(coord.x * GRID_SIZE, coord.y * GRID_SIZE, 10.0))

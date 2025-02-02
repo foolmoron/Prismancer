@@ -61,7 +61,7 @@ func reset_masks() -> void:
 	color_mask = COLOR.NONE
 	out_mask = 0
 
-func reset_lines(global_pos: Vector3) -> void:
+func reset_lines(local_pos: Vector3) -> void:
 	for color in lines.keys():
 		var arr = lines[color]
 		for line in arr:
@@ -102,8 +102,8 @@ func reset_lines(global_pos: Vector3) -> void:
 				Cell.DIR.UP_RIGHT, Cell.DIR.DOWN_LEFT:
 					line.rotation_degrees.z = -45
 			var offset := dir_to_vec(dir) * Side.GRID_SIZE / 2
-			line.global_position.x = global_pos.x + offset.x
-			line.global_position.y = global_pos.y + offset.y
+			line.position.x = local_pos.x + offset.x
+			line.position.y = local_pos.y + offset.y
 
 func try_add_outdir(dir: Cell.DIR) -> bool:
 	if out_mask & dir == 0:

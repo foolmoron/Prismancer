@@ -1,3 +1,76 @@
-[gd_scene format=3 uid="uid://onqxkjnilams"]
+[gd_scene load_steps=4 format=3 uid="uid://onqxkjnilams"]
 
-[node name="Node3D" type="Node3D"]
+[ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="1_apl3g"]
+[ext_resource type="Script" path="res://Scenes/loader.gd" id="2_blg38"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckjud"]
+font = ExtResource("1_apl3g")
+font_size = 86
+font_color = Color(0.659358, 0.18625, 0.927686, 1)
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.506577, 0.95526, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.04
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_apl3g")
+theme_override_fonts/italics_font = ExtResource("1_apl3g")
+theme_override_fonts/bold_font = ExtResource("1_apl3g")
+theme_override_font_sizes/italics_font_size = 102
+theme_override_font_sizes/normal_font_size = 81
+theme_override_font_sizes/bold_font_size = 102
+bbcode_enabled = true
+text = "The Prismancers in:
+[b]LUX ALCHEMICAL /IIInd edition/[/b]
+~ dark syde of the moon bootleg ver. ~"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -131.82
+offset_bottom = -30.82
+grow_horizontal = 2
+grow_vertical = 0
+text = "PRESS SPACE or TAP SCREEN to play"
+label_settings = SubResource("LabelSettings_ckjud")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_blg38")
+
+[node name="TouchDetector" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0.163182, 0)
+
+[connection signal="gui_input" from="TouchDetector" to="Node" method="_on_touch_detector_gui_input"]

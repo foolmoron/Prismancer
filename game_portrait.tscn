@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dahrgy4rhgob8"]
+[gd_scene load_steps=7 format=3 uid="uid://dahrgy4rhgob8"]
 
 [ext_resource type="PackedScene" uid="uid://ctx36oft835ud" path="res://Scenes/side.tscn" id="1_5heml"]
 [ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="2_kc88c"]
 [ext_resource type="Texture2D" uid="uid://ce1hk00a71g72" path="res://Art/square.png" id="3_ffn6l"]
+[ext_resource type="Script" path="res://Scenes/resetter.gd" id="4_3u2lh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6cf0a"]
 render_priority = 0
@@ -33,3 +34,6 @@ player = 1
 [node name="Separator" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 700, 0, 0, 0, 1, 0, 0, 50)
 mesh = SubResource("QuadMesh_823pp")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_3u2lh")

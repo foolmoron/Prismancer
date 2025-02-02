@@ -53,7 +53,7 @@ func refresh() -> void:
 	# set lines based on out directions and colors
 	for y in range(rows):
 		for x in range(columns):
-			cells[to_idx(x, y)].reset_lines(side.coord_to_global_pos(Vector2i(x, y)))
+			cells[to_idx(x, y)].reset_lines(side.to_local(side.coord_to_global_pos(Vector2i(x, y)))) 
 
 func _process_cells_for_dir(initial_dir: Cell.DIR, initial_pos: Vector2i) -> void:
 	var seen := {}

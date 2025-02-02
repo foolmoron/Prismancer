@@ -1,26 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bou5e8rq6ja6y"]
+[gd_scene load_steps=6 format=3 uid="uid://bou5e8rq6ja6y"]
 
 [ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="1_sy52k"]
-[ext_resource type="Shader" path="res://Lines/line.gdshader" id="2_t3wd5"]
 [ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="3_1p7up"]
 [ext_resource type="Texture2D" uid="uid://ce1hk00a71g72" path="res://Art/square.png" id="4_rxd7h"]
-
-[sub_resource type="Gradient" id="Gradient_eakru"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gny8j"]
-gradient = SubResource("Gradient_eakru")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r26l4"]
-render_priority = 0
-shader = ExtResource("2_t3wd5")
-shader_parameter/color = Color(0.0984, 0.31488, 0.82, 1)
-shader_parameter/alpha_boost = 1.8
-shader_parameter/tex = SubResource("GradientTexture1D_gny8j")
-
-[sub_resource type="QuadMesh" id="QuadMesh_ddo2s"]
-material = SubResource("ShaderMaterial_r26l4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_37y04"]
 render_priority = 0
@@ -33,8 +15,5 @@ material = SubResource("ShaderMaterial_37y04")
 
 [node name="Line" instance=ExtResource("1_sy52k")]
 
-[node name="quad" parent="." index="0"]
-mesh = SubResource("QuadMesh_ddo2s")
-
-[node name="quad2" parent="." index="1"]
+[node name="quad2" parent="." index="0"]
 mesh = SubResource("QuadMesh_utvep")
