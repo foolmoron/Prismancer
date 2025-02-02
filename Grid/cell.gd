@@ -61,12 +61,15 @@ func reset_masks() -> void:
 	color_mask = COLOR.NONE
 	out_mask = 0
 
-func reset_lines(local_pos: Vector3) -> void:
+func kill_lines() -> void:
 	for color in lines.keys():
 		var arr = lines[color]
 		for line in arr:
 			LinePool.release(color, line)
 		arr.clear()
+
+func reset_lines(local_pos: Vector3) -> void:
+	kill_lines()
 
 	var line_pool: Array
 	match color_mask:
@@ -87,6 +90,7 @@ func reset_lines(local_pos: Vector3) -> void:
 	for dir in Cell.DIR.values():
 		if out_mask & dir != 0:
 			var line := LinePool.obtain(color_mask, parent)
+			lines[color_mask].push_back(line)
 			match dir:
 				Cell.DIR.UP, Cell.DIR.DOWN, Cell.DIR.LEFT, Cell.DIR.RIGHT:
 					line.scale.y = Side.GRID_SIZE

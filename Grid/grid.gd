@@ -55,6 +55,10 @@ func refresh() -> void:
 		for x in range(columns):
 			cells[to_idx(x, y)].reset_lines(side.to_local(side.coord_to_global_pos(Vector2i(x, y)))) 
 
+func kill_lines() -> void:
+	for cell in cells:
+		cell.kill_lines()
+
 func _process_cells_for_dir(initial_dir: Cell.DIR, initial_pos: Vector2i) -> void:
 	var seen := {}
 	var queue := [[initial_pos, initial_dir]]
@@ -131,3 +135,108 @@ func _process_cells_with_color(color: Cell.COLOR, initial: Vector2i) -> void:
 		for dir in Cell.DIR.values():
 			if cell.out_mask & dir != 0:
 				queue.append(pos + Cell.dir_to_vec(dir))
+
+const SURGE_INTERVAL_SECS := 0.1
+
+func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary:
+	var count := {}
+
+	var seen := {}
+	var queue := [[initial_pos, initial_dir]]
+	var cells_to_count := []
+	while queue.size() > 0:
+		var c = queue.pop_back()
+		var pos := c[0] as Vector2i
+		var dir := c[1] as Cell.DIR
+		if pos.x < 0 || pos.x >= columns || pos.y < 0 || pos.y >= rows:
+			continue
+		var cell := cells[to_idx(pos.x, pos.y)] as Cell
+		if cell.gem == null || (seen.has(cell) && seen[cell].has(dir)):
+			continue
+		seen[cell] = seen.get(cell, {})
+		seen[cell][dir] = true
+
+		cells_to_count.append(cell)
+
+		if cell.gem.type == Gem.GEM_TYPE.SPHERE:
+			queue.append([pos + Cell.dir_to_vec(dir), dir])
+		elif cell.gem.type == Gem.GEM_TYPE.TRI_LEFT:
+			if dir == Cell.DIR.UP:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.LEFT), Cell.DIR.LEFT])
+			elif dir == Cell.DIR.DOWN:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.RIGHT), Cell.DIR.RIGHT])
+			elif dir == Cell.DIR.LEFT:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP), Cell.DIR.UP])
+			elif dir == Cell.DIR.RIGHT:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN), Cell.DIR.DOWN])
+			else:
+				queue.append([pos + Cell.dir_to_vec(dir), dir])
+		elif cell.gem.type == Gem.GEM_TYPE.TRI_RIGHT:
+			if dir == Cell.DIR.UP:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.RIGHT), Cell.DIR.RIGHT])
+			elif dir == Cell.DIR.DOWN:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.LEFT), Cell.DIR.LEFT])
+			elif dir == Cell.DIR.LEFT:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN), Cell.DIR.DOWN])
+			elif dir == Cell.DIR.RIGHT:
+				queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP), Cell.DIR.UP])
+			else:
+				queue.append([pos + Cell.dir_to_vec(dir), dir])
+		elif cell.gem.type == Gem.GEM_TYPE.STAR:
+			# randomize iteration a bit
+			match randi_range(0, 3):
+				0: 
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_LEFT), Cell.DIR.UP_LEFT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_RIGHT), Cell.DIR.UP_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_LEFT), Cell.DIR.DOWN_LEFT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_RIGHT), Cell.DIR.DOWN_RIGHT])
+				1:
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_RIGHT), Cell.DIR.DOWN_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_LEFT), Cell.DIR.DOWN_LEFT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_RIGHT), Cell.DIR.UP_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_LEFT), Cell.DIR.UP_LEFT])
+				2:
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_RIGHT), Cell.DIR.DOWN_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_RIGHT), Cell.DIR.UP_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_LEFT), Cell.DIR.DOWN_LEFT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_LEFT), Cell.DIR.UP_LEFT])
+				3:
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_RIGHT), Cell.DIR.DOWN_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_RIGHT), Cell.DIR.UP_RIGHT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.UP_LEFT), Cell.DIR.UP_LEFT])
+					queue.append([pos + Cell.dir_to_vec(Cell.DIR.DOWN_LEFT), Cell.DIR.DOWN_LEFT])
+	
+	# count and animate
+	var first := true
+	for cell in cells_to_count:
+		if cell.gem == null:
+			continue
+		if not first:
+			await side.get_tree().create_timer(SURGE_INTERVAL_SECS).timeout
+		first = false
+		count[cell.color_mask] = count.get(cell.color_mask, 0) + 1
+		cell.gem.queue_free()
+		cell.gem = null
+
+	return count
+
+const MOVE_INTERVAL_SECS := 0.05
+
+func move_gems() -> void:
+	for x in range(columns):
+		for y in range(rows):
+			var cell := cells[to_idx(x, y)] as Cell
+			if cell.gem == null:
+				continue
+			var y_final := y
+			for _y in range(y - 1, -1, -1):
+				if cells[to_idx(x, _y)].gem != null:
+					break
+				y_final = _y
+			if y_final != y:
+				cell.gem.global_position = side.coord_to_global_pos(Vector2i(x, y_final))
+				print("moving gem from ", x, ",", y, " to ", x, ",", y_final)
+				var cell2 := cells[to_idx(x, y_final)] as Cell
+				cell2.gem = cell.gem
+				cell.gem = null
+				await side.get_tree().create_timer(MOVE_INTERVAL_SECS).timeout

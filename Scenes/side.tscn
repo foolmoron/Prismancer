@@ -1,15 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=23 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
 [ext_resource type="Script" path="res://Gems/gem_spawn_entry.gd" id="2_lppdi"]
 [ext_resource type="PackedScene" uid="uid://dn4l0uwuxou3t" path="res://Gems/gem_sphere.tscn" id="3_w1g55"]
 [ext_resource type="PackedScene" uid="uid://e7swbw218co0" path="res://Gems/gem_triangle_right.tscn" id="4_fvfng"]
-[ext_resource type="PackedScene" uid="uid://bkykx4vjym2br" path="res://Scenes/column.tscn" id="4_vojst"]
+[ext_resource type="PackedScene" uid="uid://bkykx4vjym2br" path="res://Grid/column.tscn" id="4_vojst"]
 [ext_resource type="PackedScene" uid="uid://ty677q31p7vy" path="res://Gems/gem_triangle_left.tscn" id="5_0avao"]
 [ext_resource type="PackedScene" uid="uid://cmyl2l0kksyxo" path="res://Gems/gem_star.tscn" id="6_irx0m"]
 [ext_resource type="Shader" path="res://Lines/line.gdshader" id="7_fnpvp"]
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="10_aet5l"]
+[ext_resource type="PackedScene" uid="uid://dy6xb74lrk532" path="res://Grid/surge_btn.tscn" id="11_mn6if"]
 [ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="11_sxmu3"]
 [ext_resource type="PackedScene" uid="uid://dtf5bymgy22yk" path="res://Lines/line_green.tscn" id="12_f1css"]
 [ext_resource type="PackedScene" uid="uid://bou5e8rq6ja6y" path="res://Lines/line_blue.tscn" id="13_hc0mh"]
@@ -145,6 +146,14 @@ font_size = 128
 outline_size = 32
 line_spacing = 0.21
 justification_flags = 0
+
+[node name="REDBtn" parent="BoardLabels" instance=ExtResource("11_mn6if")]
+
+[node name="GRNBtn" parent="BoardLabels" instance=ExtResource("11_mn6if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="BLUBtn" parent="BoardLabels" instance=ExtResource("11_mn6if")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, -20, 0)
 
 [node name="Character" type="Node3D" parent="."]
 transform = Transform3D(280, 0, 0, 0, 520, 0, 0, 0, 1, -560, -90, 51.6172)
