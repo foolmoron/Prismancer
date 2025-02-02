@@ -65,6 +65,7 @@ func _process(delta: float) -> void:
 func setup_next_gem() -> void:
 	gem_next = gem_spawns.pick_random().instantiate() as Gem
 	$NextGem.add_child(gem_next, false)
+	gem_next.set_next(true)
 
 func _on_column_input_event(camera:Node, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int, column_idx:int) -> void:
 	if event is not InputEventScreenTouch:
@@ -82,6 +83,7 @@ func do_column(column_idx: int) -> void:
 	while idx >= grid.columns && grid.cells[idx - grid.columns].gem == null:
 		idx -= grid.columns
 	gem_next.reparent(self, false)
+	gem_next.set_next(false)
 	gem_next.global_position = coord_to_global_pos(Vector2i(idx % grid.columns, idx / grid.columns))
 	grid.cells[idx].gem = gem_next
 	setup_next_gem()

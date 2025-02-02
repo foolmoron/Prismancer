@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=53 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkykx4vjym2br" path="res://Grid/column.tscn" id="4_vojst"]
 [ext_resource type="PackedScene" uid="uid://ty677q31p7vy" path="res://Gems/gem_triangle_left.tscn" id="5_0avao"]
 [ext_resource type="PackedScene" uid="uid://cmyl2l0kksyxo" path="res://Gems/gem_star.tscn" id="6_irx0m"]
+[ext_resource type="Texture2D" uid="uid://ce1hk00a71g72" path="res://Art/square.png" id="8_5usho"]
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="10_aet5l"]
 [ext_resource type="PackedScene" uid="uid://dy6xb74lrk532" path="res://Grid/surge_btn.tscn" id="11_mn6if"]
 [ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="11_sxmu3"]
@@ -45,6 +46,15 @@ scene = ExtResource("5_0avao")
 script = ExtResource("2_lppdi")
 weight = 1
 scene = ExtResource("6_irx0m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_14n1s"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(0.187722, 0.187722, 0.187722, 1)
+shader_parameter/tex = ExtResource("8_5usho")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wlvw8"]
+material = SubResource("ShaderMaterial_14n1s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxw16"]
 render_priority = 0
@@ -140,6 +150,10 @@ material = SubResource("ShaderMaterial_m73i2")
 [node name="Side" type="Node3D"]
 script = ExtResource("1_317gq")
 gem_spawn_entries = Array[ExtResource("2_lppdi")]([SubResource("Resource_ij545"), SubResource("Resource_i44bh"), SubResource("Resource_7hfpp"), SubResource("Resource_k651g")])
+
+[node name="bg" type="MeshInstance3D" parent="."]
+transform = Transform3D(700, 0, 0, 0, 700, 0, 0, 0, 1, -350, 0, -10)
+mesh = SubResource("QuadMesh_wlvw8")
 
 [node name="Board" type="Node3D" parent="."]
 transform = Transform3D(400, 0, 0, 0, 640, 0, 0, 0, 1, -220, 30, 0)
@@ -282,7 +296,7 @@ transform = Transform3D(1040, 0, 0, 0, 1930, 0, 0, 0, 1, 0, 0, -1.1)
 mesh = SubResource("QuadMesh_q1qdi")
 
 [node name="NextGem" type="Node3D" parent="."]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -562.558, 259.193, 79.754)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -562.558, 273.72, 79.754)
 
 [node name="LineRed" parent="." instance=ExtResource("11_sxmu3")]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -380, -270, 5)
@@ -294,7 +308,7 @@ transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -220, -270, 5)
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -60, -270, 5)
 
 [node name="Orb" parent="." instance=ExtResource("15_katxw")]
-transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 1, -380, -247.659, 20)
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 1, -380, -247.659, 40)
 
 [node name="quadcolor" parent="Orb" index="1"]
 mesh = SubResource("QuadMesh_5fgtu")

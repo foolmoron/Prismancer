@@ -8,9 +8,10 @@ enum GEM_TYPE {
 	STAR,
 }
 
-@export var type: GEM_TYPE
-
 @onready var mesh := $mesh as MeshInstance3D
+
+@export var type: GEM_TYPE
+@export var solid_material: Material
 
 @onready var speed := Vector2(randf_range(2.1, 2.6), randf_range(2.1, 2.6))
 @onready var t_x := randf_range(0.0, 2.0)
@@ -30,3 +31,9 @@ func _process(delta: float) -> void:
 	mesh.rotation_degrees.x = base_x + sin(t_x * speed.x) * 25
 	mesh.rotation_degrees.z = base_z + sin(t_z * speed.y) * 12
 	pass
+
+func set_next(next: bool) -> void:
+	if next:
+		mesh.set_surface_override_material(0, solid_material)
+	else:
+		mesh.set_surface_override_material(0, null)
