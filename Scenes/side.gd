@@ -10,6 +10,11 @@ static var P2_SURGES := ["p2_r", "p2_g", "p2_b"]
 @export var gem_spawn_entries: Array[GemSpawnEntry] = []
 var gem_spawns : Array[PackedScene] = []
 
+@export var score_texts: Array[Label3D] = []
+@export var score_red_text: Label3D
+@export var score_grn_text: Label3D
+@export var score_blu_text: Label3D
+
 @onready var board := $Board as Node3D
 @onready var origin := board.global_transform.origin - to_global(Vector3(board.scale.x / 2, board.scale.y / 2, 0))
 const GRID_SIZE := 80.0
@@ -26,12 +31,22 @@ var character: Character
 var gem_next: Gem
 var surging := false
 
+var score_red := 0
+var score_grn := 0
+var score_blu := 0
+
 func _ready() -> void:
 	for entry in gem_spawn_entries:
 		for i in range(entry.weight):
 			gem_spawns.append(entry.scene)
 		
 	orb.visible = false
+
+	for text in score_texts:
+		text.text = ""
+	score_red_text.text = "0"
+	score_grn_text.text = "0"
+	score_blu_text.text = "0"
 
 	if player == 0:
 		character1.visible = true
@@ -123,5 +138,22 @@ func do_surge(color_idx: int) -> void:
 	$SurgeSound.stop()
 	$SurgeSound.volume_db = volume_prev
 	await get_tree().create_timer(0.35).timeout
+	for text in score_texts:
+		text.text = ""
 	character.set_state_active(false)
+	for key in count.keys():
+		var val := count[key] as int
+		if val >= Grid.TIER2:
+			val = val * 2
+		elif val >= Grid.TIER3:
+			val = val * 4
+		if key & Cell.COLOR.RED != 0:
+			score_red += val
+		if key & Cell.COLOR.GREEN != 0:
+			score_grn += val
+		if key & Cell.COLOR.BLUE != 0:
+			score_blu += val
+	score_red_text.text = "%s" % [score_red]
+	score_grn_text.text = "%s" % [score_grn]
+	score_blu_text.text = "%s" % [score_blu]
 	surging = false

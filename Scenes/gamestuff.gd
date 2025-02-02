@@ -7,8 +7,6 @@ const TIME_SECS := 90.0
 @onready var time_left := TIME_SECS
 @onready var time_fill := $Separator/SeparatorFill as Node3D
 
-@onready var end_sound := $EndSound as AudioStreamPlayer
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,5 +26,5 @@ func _process(delta: float) -> void:
 		game_over()
 
 func game_over() -> void:
-	end_sound.play()
+	$EndSound.play()
 	is_game_over = true

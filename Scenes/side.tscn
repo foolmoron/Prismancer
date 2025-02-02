@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=66 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -57,15 +57,6 @@ scene = ExtResource("5_0avao")
 script = ExtResource("2_lppdi")
 weight = 1
 scene = ExtResource("6_irx0m")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_14n1s"]
-render_priority = 0
-shader = ExtResource("16_krc47")
-shader_parameter/color = Color(0.187722, 0.187722, 0.187722, 1)
-shader_parameter/tex = ExtResource("8_5usho")
-
-[sub_resource type="QuadMesh" id="QuadMesh_wlvw8"]
-material = SubResource("ShaderMaterial_14n1s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxw16"]
 render_priority = 0
@@ -195,13 +186,20 @@ stream_2/stream = ExtResource("35_3ep0j")
 stream_3/stream = ExtResource("36_oh06k")
 stream_4/stream = ExtResource("37_mjwup")
 
-[node name="Side" type="Node3D"]
+[node name="Side" type="Node3D" node_paths=PackedStringArray("score_texts", "score_red_text", "score_grn_text", "score_blu_text")]
 script = ExtResource("1_317gq")
+player = null
 gem_spawn_entries = Array[ExtResource("2_lppdi")]([SubResource("Resource_ij545"), SubResource("Resource_i44bh"), SubResource("Resource_7hfpp"), SubResource("Resource_k651g")])
+score_texts = [NodePath("BoardLabels/DummyCounter"), NodePath("BoardLabels/REDCounter"), NodePath("BoardLabels/GRNCounter"), NodePath("BoardLabels/YLWCounter"), NodePath("BoardLabels/BLUCounter"), NodePath("BoardLabels/MGNCounter"), NodePath("BoardLabels/CYNCounter"), NodePath("BoardLabels/WHTCounter")]
+score_red_text = NodePath("BoardLabels/REDValue")
+score_grn_text = NodePath("BoardLabels/GRNValue")
+score_blu_text = NodePath("BoardLabels/BLUValue")
 
-[node name="bg" type="MeshInstance3D" parent="."]
-transform = Transform3D(700, 0, 0, 0, 700, 0, 0, 0, 1, -350, 0, -10)
-mesh = SubResource("QuadMesh_wlvw8")
+[node name="bg" type="Sprite3D" parent="."]
+transform = Transform3D(700, 0, 0, 0, 700, 0, 0, 0, 700, -350, 0, -100)
+modulate = Color(0.187722, 0.187722, 0.187722, 1)
+transparent = false
+texture = ExtResource("8_5usho")
 
 [node name="Board" type="Node3D" parent="."]
 transform = Transform3D(400, 0, 0, 0, 640, 0, 0, 0, 1, -220, 30, 0)
@@ -228,7 +226,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -220, -305.902, 29.3248)
 
 [node name="GRNLabel" type="Label3D" parent="BoardLabels"]
-transform = Transform3D(13.9479, 0, 0, 0, 11.0086, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(13.9479, 0, 0, 0, 11.0086, 0, 0, 0, 1, 0, 0, 300)
 pixel_size = 0.016
 modulate = Color(0.392157, 0.737255, 0.329412, 1)
 text = "GRN"
@@ -283,7 +281,7 @@ outline_size = 32
 line_spacing = 0.21
 justification_flags = 0
 
-[node name="BLUValue2" type="Label3D" parent="BoardLabels"]
+[node name="BLUValue" type="Label3D" parent="BoardLabels"]
 transform = Transform3D(23.0045, 0, 0, 0, 18.1568, 0, 0, 0, 1, 158.388, -26.2329, 0)
 pixel_size = 0.016
 modulate = Color(0.305882, 0.427451, 0.705882, 1)
@@ -301,6 +299,95 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 
 [node name="BLUBtn" parent="BoardLabels" instance=ExtResource("11_mn6if")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, -20, 0)
+
+[node name="DummyCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.232, 615.623, 100)
+visible = false
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.929412, 0.180392, 0.45098, 1)
+text = "RED: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="REDCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.232, 615.623, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.929412, 0.180392, 0.45098, 1)
+text = "RED: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="GRNCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.467, 549.808, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.392157, 0.737255, 0.329412, 1)
+text = "GRN: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="BLUCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.094, 482.981, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.3913, 0.54691, 0.91, 1)
+text = "BLU: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="YLWCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.7149, 420.203, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.9, 0.8013, 0.054, 1)
+text = "YLW: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="MGNCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.069, 359.451, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.685, 0.1, 1, 1)
+text = "MGN: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="CYNCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.1035, 294.649, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.0783, 0.87, 0.777635, 1)
+text = "CYN: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
+
+[node name="WHTCounter" type="Label3D" parent="BoardLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.8653, 220.733, 100)
+pixel_size = 0.1982
+double_sided = false
+modulate = Color(0.815673, 0.815673, 0.815673, 1)
+text = "WHT: 99 x 4"
+font = ExtResource("10_aet5l")
+font_size = 270
+outline_size = 94
+horizontal_alignment = 0
 
 [node name="Character1" type="Node3D" parent="."]
 transform = Transform3D(0.273361, 0, 0, 0, 0.273361, 0, 0, 0, 1, -575.115, -89.1109, 51.6172)

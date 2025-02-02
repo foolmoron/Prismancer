@@ -1,12 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://onqxkjnilams"]
+[gd_scene load_steps=6 format=3 uid="uid://onqxkjnilams"]
 
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="1_apl3g"]
 [ext_resource type="Script" path="res://Scenes/loader.gd" id="2_blg38"]
+[ext_resource type="Texture2D" uid="uid://dqc5q011jhd0" path="res://Art/prismancer_logo.png" id="3_2gynv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ckjud"]
+[sub_resource type="LabelSettings" id="LabelSettings_sov7a"]
 font = ExtResource("1_apl3g")
-font_size = 86
-font_color = Color(0.659358, 0.18625, 0.927686, 1)
+font_size = 75
+font_color = Color(0.741176, 0.968627, 1, 1)
+outline_size = 12
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+shadow_size = 15
+shadow_color = Color(0.0791031, 0.0791031, 0.0791031, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nuayy"]
+font = ExtResource("1_apl3g")
+font_size = 26
+font_color = Color(0.741176, 0.968627, 1, 1)
+outline_size = 12
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+shadow_size = 15
+shadow_color = Color(0.0791031, 0.0791031, 0.0791031, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -23,9 +39,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.506577, 0.95526, 1, 1)
+color = Color(0.269186, 0.269186, 0.269186, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
@@ -46,23 +63,69 @@ text = "The Prismancers in:
 [b]LUX ALCHEMICAL /IIInd edition/[/b]
 ~ dark syde of the moon bootleg ver. ~"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label2" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -131.82
-offset_bottom = -30.82
+offset_top = -91.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "PRESS SPACE or TAP SCREEN to play"
-label_settings = SubResource("LabelSettings_ckjud")
+text = "PRESS SPACE or TAP SCREEN to VERSUS"
+label_settings = SubResource("LabelSettings_sov7a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -273.0
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Made in 48 hours for RVA Local Game Jam 2025"
+label_settings = SubResource("LabelSettings_nuayy")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 551.0
+offset_top = -235.0
+offset_right = 551.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Code: Momin Khan
+2D Art: 
+3D Art:
+Audio:"
+label_settings = SubResource("LabelSettings_nuayy")
+
 [node name="Node" type="Node" parent="."]
 script = ExtResource("2_blg38")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -203.0
+offset_right = 545.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.714962, 0.714962)
+texture = ExtResource("3_2gynv")
 
 [node name="TouchDetector" type="ColorRect" parent="."]
 layout_mode = 1

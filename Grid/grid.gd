@@ -213,6 +213,8 @@ func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary
 	side.orb.visible = true
 	side.orb.global_position = side.coord_to_global_pos(Vector2i(initial_pos.x, initial_pos.y) - Cell.dir_to_vec(initial_dir))
 	side.orb.global_position.z += 10
+	for text in side.score_texts:
+		text.text = ""
 	for cell in cells_to_count:
 		if cell.gem == null:
 			continue
@@ -227,6 +229,28 @@ func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary
 		count[cell.color_mask] = count.get(cell.color_mask, 0) + 1
 		cell.gem.queue_free()
 		cell.gem = null
+
+		var prefix := ""
+		match cell.color_mask:
+			Cell.COLOR.RED:
+				prefix = "RED"
+			Cell.COLOR.GREEN:
+				prefix = "GRN"
+			Cell.COLOR.BLUE:
+				prefix = "BLU"
+			Cell.COLOR.YELLOW:
+				prefix = "YLW"
+			Cell.COLOR.MAGENTA:
+				prefix = "MGN"
+			Cell.COLOR.CYAN:
+				prefix = "CYN"
+			Cell.COLOR.WHITE:
+				prefix = "WHT"
+		side.score_texts[cell.color_mask].text = "%s: %s" % [prefix, count[cell.color_mask]]
+		if count[cell.color_mask] >= TIER2:
+			side.score_texts[cell.color_mask].text += " x 2"
+		elif count[cell.color_mask] >= TIER3:
+			side.score_texts[cell.color_mask].text += " x 4"
 
 		if count[cell.color_mask] >= TIER2:
 			side.get_node("Pop2Sound").play()
