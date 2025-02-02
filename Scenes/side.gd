@@ -119,7 +119,7 @@ func do_surge(color_idx: int) -> void:
 	if surging or GameStuff.is_game_over:
 		return
 	surging = true
-	var volume_prev := $SurgeSound.volume_db as float
+	$SurgeSound.volume_db = -4
 	$SurgeSound.play()
 	character.set_state_active(true)
 	var count := {}
@@ -136,23 +136,24 @@ func do_surge(color_idx: int) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property($SurgeSound, "volume_db", -60.0, 0.35).set_trans(Tween.TRANS_QUAD)
 	$SurgeSound.stop()
-	$SurgeSound.volume_db = volume_prev
+	$SurgeSound.volume_db = -4
 	await get_tree().create_timer(0.35).timeout
 	for text in score_texts:
 		text.text = ""
 	character.set_state_active(false)
-	for key in count.keys():
-		var val := count[key] as int
-		if val >= Grid.TIER2:
-			val = val * 2
-		elif val >= Grid.TIER3:
-			val = val * 4
-		if key & Cell.COLOR.RED != 0:
-			score_red += val
-		if key & Cell.COLOR.GREEN != 0:
-			score_grn += val
-		if key & Cell.COLOR.BLUE != 0:
-			score_blu += val
+	if not GameStuff.is_game_over:
+		for key in count.keys():
+			var val := count[key] as int
+			if val >= Grid.TIER2:
+				val = val * 2
+			elif val >= Grid.TIER3:
+				val = val * 4
+			if key & Cell.COLOR.RED != 0:
+				score_red += val
+			if key & Cell.COLOR.GREEN != 0:
+				score_grn += val
+			if key & Cell.COLOR.BLUE != 0:
+				score_blu += val
 	score_red_text.text = "%s" % [score_red]
 	score_grn_text.text = "%s" % [score_grn]
 	score_blu_text.text = "%s" % [score_blu]

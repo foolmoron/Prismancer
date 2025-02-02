@@ -18,9 +18,9 @@ shadow_offset = Vector2(2, 2)
 font = ExtResource("1_apl3g")
 font_size = 26
 font_color = Color(0.741176, 0.968627, 1, 1)
-outline_size = 12
+outline_size = 8
 outline_color = Color(0.133333, 0.133333, 0.133333, 1)
-shadow_size = 15
+shadow_size = 10
 shadow_color = Color(0.0791031, 0.0791031, 0.0791031, 1)
 shadow_offset = Vector2(2, 2)
 
@@ -98,16 +98,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 551.0
+offset_left = 480.0
 offset_top = -235.0
-offset_right = 551.0
+offset_right = 480.0
 offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Code: Momin Khan
-2D Art: 
-3D Art:
-Audio:"
+text = "Code: Momin Khan \"foolmoron\"
+2D Art: Yeala Grimes \"Anitithe\"
+3D Art: George \"FuzzyForms\"
+Audio: Alixander Laffredo-Dietrich - IG @they_call_me_el_guapo"
 label_settings = SubResource("LabelSettings_nuayy")
 
 [node name="Node" type="Node" parent="."]

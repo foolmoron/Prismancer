@@ -16,6 +16,15 @@ var magenta: Array = []
 var cyan: Array = []
 var white: Array = []
 
+func clear() -> void:
+	red.clear()
+	green.clear()
+	blue.clear()
+	yellow.clear()
+	magenta.clear()
+	cyan.clear()
+	white.clear()
+
 func obtain(color: Cell.COLOR, parent: Node3D) -> Node3D:
 	var line: Node3D
 	match color:

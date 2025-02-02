@@ -22,4 +22,6 @@ far = 2000.0
 [node name="SideFlipped" parent="." instance=ExtResource("2_44qxm")]
 player = 1
 
-[node name="GameStuff" parent="." instance=ExtResource("6_57frn")]
+[node name="GameStuff" parent="." node_paths=PackedStringArray("side1", "side2") instance=ExtResource("6_57frn")]
+side1 = NodePath("../Side")
+side2 = NodePath("../SideFlipped")

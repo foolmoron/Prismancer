@@ -188,7 +188,6 @@ stream_4/stream = ExtResource("37_mjwup")
 
 [node name="Side" type="Node3D" node_paths=PackedStringArray("score_texts", "score_red_text", "score_grn_text", "score_blu_text")]
 script = ExtResource("1_317gq")
-player = null
 gem_spawn_entries = Array[ExtResource("2_lppdi")]([SubResource("Resource_ij545"), SubResource("Resource_i44bh"), SubResource("Resource_7hfpp"), SubResource("Resource_k651g")])
 score_texts = [NodePath("BoardLabels/DummyCounter"), NodePath("BoardLabels/REDCounter"), NodePath("BoardLabels/GRNCounter"), NodePath("BoardLabels/YLWCounter"), NodePath("BoardLabels/BLUCounter"), NodePath("BoardLabels/MGNCounter"), NodePath("BoardLabels/CYNCounter"), NodePath("BoardLabels/WHTCounter")]
 score_red_text = NodePath("BoardLabels/REDValue")
