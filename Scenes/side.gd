@@ -75,7 +75,7 @@ func _on_column_input_event(camera:Node, event:InputEvent, event_position:Vector
 		do_column(column_idx)
 
 func do_column(column_idx: int) -> void:
-	if surging:
+	if surging or GameStuff.is_game_over:
 		return
 	var idx := grid.to_idx(column_idx, -1)
 	if grid.cells[idx].gem != null:
@@ -88,6 +88,7 @@ func do_column(column_idx: int) -> void:
 	grid.cells[idx].gem = gem_next
 	setup_next_gem()
 	grid.refresh()
+	$DropSound.play()
 
 func coord_to_global_pos(coord: Vector2i) -> Vector3:
 	return origin + to_global(Vector3(GRID_SIZE / 2, GRID_SIZE / 2, 0) + Vector3(coord.x * GRID_SIZE, coord.y * GRID_SIZE, 10.0))
@@ -100,9 +101,11 @@ func _on_surge_input_event(camera:Node, event:InputEvent, event_position:Vector3
 		do_surge(surge_idx)
 
 func do_surge(color_idx: int) -> void:
-	if surging:
+	if surging or GameStuff.is_game_over:
 		return
 	surging = true
+	var volume_prev := $SurgeSound.volume_db as float
+	$SurgeSound.play()
 	character.set_state_active(true)
 	var count := {}
 	match color_idx:
@@ -115,6 +118,10 @@ func do_surge(color_idx: int) -> void:
 	orb.visible = false
 	await grid.move_gems()
 	grid.refresh()
+	var tween := get_tree().create_tween()
+	tween.tween_property($SurgeSound, "volume_db", -60.0, 0.35).set_trans(Tween.TRANS_QUAD)
+	$SurgeSound.stop()
+	$SurgeSound.volume_db = volume_prev
 	await get_tree().create_timer(0.35).timeout
 	character.set_state_active(false)
 	surging = false

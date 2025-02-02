@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=68 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -26,6 +26,17 @@
 [ext_resource type="Texture2D" uid="uid://b6du2yvm8xr1p" path="res://Art/circle_faded.png" id="17_dypse"]
 [ext_resource type="Texture2D" uid="uid://brf7xdun1vc5k" path="res://Art/hacker_neutral_bg_img.png" id="18_7ixr5"]
 [ext_resource type="Texture2D" uid="uid://xpicuq1jsrie" path="res://Art/hacker_atkpose_bg_img.png" id="20_cfmw6"]
+[ext_resource type="AudioStream" uid="uid://bg2tkurmbn74t" path="res://Sound/Bubble Single WAV/Bubble Singles-001.wav" id="27_2ecr0"]
+[ext_resource type="AudioStream" uid="uid://hioienefksr5" path="res://Sound/Bubble Single WAV/Bubble Singles-002.wav" id="28_0npo0"]
+[ext_resource type="AudioStream" uid="uid://bmvqkasvhkakw" path="res://Sound/Bubble Single WAV/Bubble Singles-003.wav" id="29_42yed"]
+[ext_resource type="AudioStream" uid="uid://dfe4xp6iy5rsq" path="res://Sound/Bubble Single WAV/Bubble Singles-004.wav" id="30_a3o5c"]
+[ext_resource type="AudioStream" uid="uid://blwkd8on5u0ck" path="res://Sound/Bubble Single WAV/Bubble Singles-005.wav" id="31_ypp22"]
+[ext_resource type="AudioStream" uid="uid://brhxjvep4satr" path="res://Sound/Light Surge.wav" id="32_05s5x"]
+[ext_resource type="AudioStream" uid="uid://dpa341inpgsal" path="res://Sound/Bubble Group WAV/Bubble Groups-001.wav" id="33_t0n1c"]
+[ext_resource type="AudioStream" uid="uid://bkyc3lnqdlyja" path="res://Sound/Bubble Group WAV/Bubble Groups-002.wav" id="34_44vvo"]
+[ext_resource type="AudioStream" uid="uid://bpxn3oesey0xa" path="res://Sound/Bubble Group WAV/Bubble Groups-003.wav" id="35_3ep0j"]
+[ext_resource type="AudioStream" uid="uid://bykqq7nafohu2" path="res://Sound/Bubble Group WAV/Bubble Groups-004.wav" id="36_oh06k"]
+[ext_resource type="AudioStream" uid="uid://cvtbftahik35w" path="res://Sound/Bubble Group WAV/Bubble Groups-005.wav" id="37_mjwup"]
 
 [sub_resource type="Resource" id="Resource_ij545"]
 script = ExtResource("2_lppdi")
@@ -146,6 +157,43 @@ shader_parameter/tex = ExtResource("17_dypse")
 [sub_resource type="QuadMesh" id="QuadMesh_5fgtu"]
 resource_local_to_scene = true
 material = SubResource("ShaderMaterial_m73i2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ionie"]
+random_volume_offset_db = 1.5
+streams_count = 5
+stream_0/stream = ExtResource("27_2ecr0")
+stream_1/stream = ExtResource("28_0npo0")
+stream_2/stream = ExtResource("29_42yed")
+stream_3/stream = ExtResource("30_a3o5c")
+stream_4/stream = ExtResource("31_ypp22")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vwdlg"]
+random_volume_offset_db = 1.5
+streams_count = 5
+stream_0/stream = ExtResource("27_2ecr0")
+stream_1/stream = ExtResource("28_0npo0")
+stream_2/stream = ExtResource("29_42yed")
+stream_3/stream = ExtResource("30_a3o5c")
+stream_4/stream = ExtResource("31_ypp22")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_boylt"]
+random_volume_offset_db = 1.5
+streams_count = 5
+stream_0/stream = ExtResource("33_t0n1c")
+stream_1/stream = ExtResource("34_44vvo")
+stream_2/stream = ExtResource("35_3ep0j")
+stream_3/stream = ExtResource("36_oh06k")
+stream_4/stream = ExtResource("37_mjwup")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_50s7k"]
+random_pitch = 1.1
+random_volume_offset_db = 1.5
+streams_count = 5
+stream_0/stream = ExtResource("33_t0n1c")
+stream_1/stream = ExtResource("34_44vvo")
+stream_2/stream = ExtResource("35_3ep0j")
+stream_3/stream = ExtResource("36_oh06k")
+stream_4/stream = ExtResource("37_mjwup")
 
 [node name="Side" type="Node3D"]
 script = ExtResource("1_317gq")
@@ -312,6 +360,29 @@ transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 1, -380, -247.659, 40)
 
 [node name="quadcolor" parent="Orb" index="1"]
 mesh = SubResource("QuadMesh_5fgtu")
+
+[node name="DropSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ionie")
+attenuation_model = 3
+pitch_scale = 0.81
+
+[node name="SurgeSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("32_05s5x")
+attenuation_model = 3
+volume_db = -6.327
+
+[node name="Pop1Sound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_vwdlg")
+attenuation_model = 3
+
+[node name="Pop2Sound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_boylt")
+attenuation_model = 3
+
+[node name="Pop3Sound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_50s7k")
+attenuation_model = 3
+pitch_scale = 1.15
 
 [connection signal="input_event" from="Board/Column0" to="." method="_on_column_input_event" binds= [0]]
 [connection signal="input_event" from="Board/Column1" to="." method="_on_column_input_event" binds= [1]]

@@ -1,6 +1,9 @@
 class_name Grid
 extends Resource
 
+const TIER2 := 5
+const TIER3 := 10
+
 var columns: int
 var rows: int
 var cells: Array = []
@@ -224,6 +227,13 @@ func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary
 		count[cell.color_mask] = count.get(cell.color_mask, 0) + 1
 		cell.gem.queue_free()
 		cell.gem = null
+
+		if count[cell.color_mask] >= TIER2:
+			side.get_node("Pop2Sound").play()
+		elif count[cell.color_mask] >= TIER3:
+			side.get_node("Pop3Sound").play()
+		else:
+			side.get_node("Pop1Sound").play()
 
 	return count
 

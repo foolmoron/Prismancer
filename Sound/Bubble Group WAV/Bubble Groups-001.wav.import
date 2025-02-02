@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpa341inpgsal"
+path="res://.godot/imported/Bubble Groups-001.wav-fb984471ff7498e9714c93329dbfb741.sample"
+
+[deps]
+
+source_file="res://Sound/Bubble Group WAV/Bubble Groups-001.wav"
+dest_files=["res://.godot/imported/Bubble Groups-001.wav-fb984471ff7498e9714c93329dbfb741.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
