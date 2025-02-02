@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck4umah3jkvmh"]
+
+[ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="1_gy65h"]
+[ext_resource type="Shader" path="res://Lines/line.gdshader" id="2_bojgh"]
+
+[sub_resource type="Gradient" id="Gradient_b53eh"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gny8j"]
+gradient = SubResource("Gradient_b53eh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbpi0"]
+render_priority = 0
+shader = ExtResource("2_bojgh")
+shader_parameter/color = Color(0.92, 0.602907, 0.0552, 1)
+shader_parameter/alpha_boost = 2.2
+shader_parameter/tex = SubResource("GradientTexture1D_gny8j")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hqj6m"]
+material = SubResource("ShaderMaterial_gbpi0")
+
+[node name="Line" instance=ExtResource("1_gy65h")]
+transform = Transform3D(20, 0, 0, 0, 80, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="quad" parent="." index="0"]
+mesh = SubResource("QuadMesh_hqj6m")

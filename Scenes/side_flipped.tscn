@@ -15,3 +15,12 @@ transform = Transform3D(-280, 0, 0, 0, 520, 0, 0, 0, 1, 559.93, -90, 21.839)
 
 [node name="NextGem" parent="." index="3"]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 562.558, 259.193, 79.754)
+
+[node name="LineRed" parent="." index="4"]
+transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 60, -270, 5)
+
+[node name="LineGreen" parent="." index="5"]
+transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 220, -270, 5)
+
+[node name="LineBlue" parent="." index="6"]
+transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 380, -270, 5)

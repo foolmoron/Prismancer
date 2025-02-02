@@ -20,7 +20,7 @@ shader_parameter/tex = SubResource("GradientTexture1D_gny8j")
 material = SubResource("ShaderMaterial_2g02v")
 
 [node name="Line" type="Node3D"]
-transform = Transform3D(20, 0, 0, 0, 80, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 80, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="quad" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00564623, 0)

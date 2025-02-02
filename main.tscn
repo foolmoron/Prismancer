@@ -1,19 +1,18 @@
 [gd_scene load_steps=7 format=3 uid="uid://onqxkjnilams"]
 
 [ext_resource type="PackedScene" uid="uid://ctx36oft835ud" path="res://Scenes/side.tscn" id="2_04fjn"]
+[ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="3_lkugl"]
 [ext_resource type="PackedScene" uid="uid://o7da5ms7uaw1" path="res://Scenes/side_flipped.tscn" id="3_w67uk"]
 [ext_resource type="Texture2D" uid="uid://ce1hk00a71g72" path="res://Art/square.png" id="4_m0n83"]
-[ext_resource type="Shader" path="res://Lines/line.gdshader" id="9_ybk0w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1o3uf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cf0a"]
 render_priority = 0
-shader = ExtResource("9_ybk0w")
+shader = ExtResource("3_lkugl")
 shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/alpha_boost = 1.8
 shader_parameter/tex = ExtResource("4_m0n83")
 
 [sub_resource type="QuadMesh" id="QuadMesh_823pp"]
-material = SubResource("ShaderMaterial_1o3uf")
+material = SubResource("ShaderMaterial_6cf0a")
 
 [node name="Node3D" type="Node3D"]
 
@@ -29,6 +28,6 @@ far = 2000.0
 
 [node name="SideFlipped" parent="." instance=ExtResource("3_w67uk")]
 
-[node name="Line" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 700, 0, 0, 0, 1, 0, 0, 10)
+[node name="Separator" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 700, 0, 0, 0, 1, 0, 0, 50)
 mesh = SubResource("QuadMesh_823pp")

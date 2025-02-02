@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Gems/gem.gd" id="1_wp0fa"]
 
 [node name="Gem" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("1_wp0fa")
 
 [node name="mesh" type="MeshInstance3D" parent="."]

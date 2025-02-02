@@ -6,11 +6,11 @@ var gem_spawns : Array[PackedScene] = []
 
 @onready var board := $Board as Node3D
 @onready var origin := board.global_transform.origin - Vector3(board.scale.x / 2, board.scale.y / 2, 0)
-@export var grid_size := 80.0
+const GRID_SIZE := 80.0
 
 const GRID_COLUMNS := 5
 const GRID_ROWS := 8
-@onready var grid := Grid.new(GRID_COLUMNS, GRID_ROWS)
+@onready var grid := Grid.new(GRID_COLUMNS, GRID_ROWS, self)
 
 var gem_next: Gem
 
@@ -20,6 +20,7 @@ func _ready() -> void:
 			gem_spawns.append(entry.scene)
 		
 	setup_next_gem()
+	grid.refresh()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,6 +41,10 @@ func _on_column_input_event(camera:Node, event:InputEvent, event_position:Vector
 		while idx >= grid.columns && grid.cells[idx - grid.columns].gem == null:
 			idx -= grid.columns
 		gem_next.reparent(self, false)
-		gem_next.global_position = origin + Vector3(grid_size / 2, grid_size / 2, 0) + Vector3((idx % grid.columns) * grid_size, (idx / grid.columns) * grid_size, 0)
+		gem_next.global_position = coord_to_global_pos(Vector2i(idx % grid.columns, idx / grid.columns))
 		grid.cells[idx].gem = gem_next
 		setup_next_gem()
+		grid.refresh()
+
+func coord_to_global_pos(coord: Vector2i) -> Vector3:
+	return origin + Vector3(GRID_SIZE / 2, GRID_SIZE / 2, 0) + Vector3(coord.x * GRID_SIZE, coord.y * GRID_SIZE, 10.0)

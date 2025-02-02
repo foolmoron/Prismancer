@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=22 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cmyl2l0kksyxo" path="res://Gems/gem_star.tscn" id="6_irx0m"]
 [ext_resource type="Shader" path="res://Lines/line.gdshader" id="7_fnpvp"]
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="10_aet5l"]
+[ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="11_sxmu3"]
+[ext_resource type="PackedScene" uid="uid://dtf5bymgy22yk" path="res://Lines/line_green.tscn" id="12_f1css"]
+[ext_resource type="PackedScene" uid="uid://bou5e8rq6ja6y" path="res://Lines/line_blue.tscn" id="13_hc0mh"]
 
 [sub_resource type="Resource" id="Resource_ij545"]
 script = ExtResource("2_lppdi")
@@ -152,6 +155,15 @@ mesh = SubResource("QuadMesh_6jcq2")
 
 [node name="NextGem" type="Node3D" parent="."]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -562.558, 259.193, 79.754)
+
+[node name="LineRed" parent="." instance=ExtResource("11_sxmu3")]
+transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -380, -270, 5)
+
+[node name="LineGreen" parent="." instance=ExtResource("12_f1css")]
+transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -220, -270, 5)
+
+[node name="LineBlue" parent="." instance=ExtResource("13_hc0mh")]
+transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -60, -270, 5)
 
 [connection signal="input_event" from="Board/Column0" to="." method="_on_column_input_event" binds= [0]]
 [connection signal="input_event" from="Board/Column1" to="." method="_on_column_input_event" binds= [1]]
