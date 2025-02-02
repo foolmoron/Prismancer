@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bhlk2x2rjxfo2" path="res://Meshes/triangle.res" id="2_g1qdc"]
 
 [node name="Gem" instance=ExtResource("1_yg157")]
+type = 2
 
 [node name="mesh" parent="." index="0"]
 transform = Transform3D(27.72, 0, 0, 0, -1.21168e-06, -27.72, 0, 27.72, -1.21168e-06, 0, -12, 0)

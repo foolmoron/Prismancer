@@ -1,6 +1,15 @@
 class_name Gem
 extends Node3D
 
+enum GEM_TYPE {
+	SPHERE,
+	TRI_LEFT,
+	TRI_RIGHT,
+	STAR,
+}
+
+@export var type: GEM_TYPE
+
 @onready var mesh := $mesh as MeshInstance3D
 
 # Called when the node enters the scene tree for the first time.

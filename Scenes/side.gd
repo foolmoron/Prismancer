@@ -10,22 +10,14 @@ var gem_spawns : Array[PackedScene] = []
 
 const GRID_COLUMNS := 5
 const GRID_ROWS := 8
-var grid: Array[Gem] = []
+@onready var grid := Grid.new(GRID_COLUMNS, GRID_ROWS)
 
 var gem_next: Gem
-
-func to_idx(column_idx: int, row_idx: int) -> int:
-	if row_idx < 0:
-		row_idx += GRID_ROWS
-	return column_idx + row_idx * GRID_COLUMNS
 
 func _ready() -> void:
 	for entry in gem_spawn_entries:
 		for i in range(entry.weight):
 			gem_spawns.append(entry.scene)
-
-	for i in range(GRID_COLUMNS * GRID_ROWS):
-		grid.append(null)
 		
 	setup_next_gem()
 
@@ -42,12 +34,12 @@ func _on_column_input_event(camera:Node, event:InputEvent, event_position:Vector
 		return
 	var evt := event as InputEventScreenTouch
 	if evt.pressed:
-		var idx := to_idx(column_idx, -1)
-		if grid[idx] != null:
+		var idx := grid.to_idx(column_idx, -1)
+		if grid.cells[idx].gem != null:
 			return
-		while idx >= GRID_COLUMNS && grid[idx - GRID_COLUMNS] == null:
-			idx -= GRID_COLUMNS
+		while idx >= grid.columns && grid.cells[idx - grid.columns].gem == null:
+			idx -= grid.columns
 		gem_next.reparent(self, false)
-		gem_next.global_position = origin + Vector3(grid_size / 2, grid_size / 2, 0) + Vector3((idx % GRID_COLUMNS) * grid_size, (idx / GRID_COLUMNS) * grid_size, 0)
-		grid[idx] = gem_next
+		gem_next.global_position = origin + Vector3(grid_size / 2, grid_size / 2, 0) + Vector3((idx % grid.columns) * grid_size, (idx / grid.columns) * grid_size, 0)
+		grid.cells[idx].gem = gem_next
 		setup_next_gem()
