@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=51 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -12,11 +12,20 @@
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="10_aet5l"]
 [ext_resource type="PackedScene" uid="uid://dy6xb74lrk532" path="res://Grid/surge_btn.tscn" id="11_mn6if"]
 [ext_resource type="PackedScene" uid="uid://cucbspicwdsqi" path="res://Lines/line_red.tscn" id="11_sxmu3"]
+[ext_resource type="Script" path="res://Scenes/character.gd" id="12_eo7v0"]
 [ext_resource type="PackedScene" uid="uid://dtf5bymgy22yk" path="res://Lines/line_green.tscn" id="12_f1css"]
+[ext_resource type="Texture2D" uid="uid://nqmrn5x6quaq" path="res://Art/hacker_atkpose_img.png" id="13_bvwes"]
 [ext_resource type="PackedScene" uid="uid://bou5e8rq6ja6y" path="res://Lines/line_blue.tscn" id="13_hc0mh"]
+[ext_resource type="Texture2D" uid="uid://kbgvohvv66j0" path="res://Art/dancer_neutral2_img.png" id="13_k84wj"]
+[ext_resource type="Texture2D" uid="uid://bn8vgedfnlhyb" path="res://Art/dancer_atkpose2_img.png" id="13_uo08p"]
+[ext_resource type="Texture2D" uid="uid://d140f5ihedjxp" path="res://Art/dancer_neutralbg_img.png" id="14_rr0mj"]
+[ext_resource type="Texture2D" uid="uid://ccx68oq84pw88" path="res://Art/hacker_neutral2_img.png" id="15_0t1f6"]
 [ext_resource type="PackedScene" uid="uid://cmmv7xp3y61bx" path="res://Grid/orb.tscn" id="15_katxw"]
+[ext_resource type="Texture2D" uid="uid://b1fwqcvgmcxll" path="res://Art/dancer_atkpose_bg_img.png" id="16_c21y1"]
 [ext_resource type="Shader" path="res://Shaders/unlit_tex.gdshader" id="16_krc47"]
 [ext_resource type="Texture2D" uid="uid://b6du2yvm8xr1p" path="res://Art/circle_faded.png" id="17_dypse"]
+[ext_resource type="Texture2D" uid="uid://brf7xdun1vc5k" path="res://Art/hacker_neutral_bg_img.png" id="18_7ixr5"]
+[ext_resource type="Texture2D" uid="uid://xpicuq1jsrie" path="res://Art/hacker_atkpose_bg_img.png" id="20_cfmw6"]
 
 [sub_resource type="Resource" id="Resource_ij545"]
 script = ExtResource("2_lppdi")
@@ -48,12 +57,77 @@ shader_parameter/tex = ExtResource("2_e6vki")
 [sub_resource type="QuadMesh" id="QuadMesh_rhpbv"]
 material = SubResource("ShaderMaterial_qxw16")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pxtq"]
-emission_enabled = true
-emission = Color(0.992178, 0, 0.608783, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhu2y"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("13_uo08p")
 
-[sub_resource type="QuadMesh" id="QuadMesh_6jcq2"]
-material = SubResource("StandardMaterial3D_2pxtq")
+[sub_resource type="QuadMesh" id="QuadMesh_nu84a"]
+material = SubResource("ShaderMaterial_lhu2y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0rm8"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("14_rr0mj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qi1x8"]
+material = SubResource("ShaderMaterial_d0rm8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jviby"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("13_k84wj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_271ly"]
+material = SubResource("ShaderMaterial_jviby")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ixh7d"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("16_c21y1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ksipw"]
+material = SubResource("ShaderMaterial_ixh7d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmrdq"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("15_0t1f6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o1uyc"]
+material = SubResource("ShaderMaterial_nmrdq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkdv7"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("18_7ixr5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ieq7f"]
+material = SubResource("ShaderMaterial_gkdv7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8hafv"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("13_bvwes")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c0vpm"]
+material = SubResource("ShaderMaterial_8hafv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp8m1"]
+render_priority = 0
+shader = ExtResource("16_krc47")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("20_cfmw6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_q1qdi"]
+material = SubResource("ShaderMaterial_pp8m1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m73i2"]
 render_priority = 0
@@ -168,12 +242,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 [node name="BLUBtn" parent="BoardLabels" instance=ExtResource("11_mn6if")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, -20, 0)
 
-[node name="Character" type="Node3D" parent="."]
-transform = Transform3D(280, 0, 0, 0, 520, 0, 0, 0, 1, -560, -90, 51.6172)
+[node name="Character1" type="Node3D" parent="."]
+transform = Transform3D(0.273361, 0, 0, 0, 0.273361, 0, 0, 0, 1, -575.115, -89.1109, 51.6172)
+script = ExtResource("12_eo7v0")
 
-[node name="bg2" type="MeshInstance3D" parent="Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-mesh = SubResource("QuadMesh_6jcq2")
+[node name="char_idle" type="MeshInstance3D" parent="Character1"]
+transform = Transform3D(1040, 0, 0, 0, 2039, 0, 0, 0, 1, -40.4929, 58.2473, -1)
+mesh = SubResource("QuadMesh_nu84a")
+
+[node name="bg_idle" type="MeshInstance3D" parent="Character1"]
+transform = Transform3D(1040, 0, 0, 0, 1930, 0, 0, 0, 1, -40.7444, 3.70416, -1.1)
+mesh = SubResource("QuadMesh_qi1x8")
+
+[node name="char_active" type="MeshInstance3D" parent="Character1"]
+transform = Transform3D(1827, 0, 0, 0, 2006, 0, 0, 0, 1, 48.2468, 15.0519, -1)
+mesh = SubResource("QuadMesh_271ly")
+
+[node name="bg_active" type="MeshInstance3D" parent="Character1"]
+transform = Transform3D(1040, 0, 0, 0, 1930, 0, 0, 0, 1, -40.744, 3.7, -1.1)
+mesh = SubResource("QuadMesh_ksipw")
+
+[node name="Character2" type="Node3D" parent="."]
+transform = Transform3D(0.273361, 0, 0, 0, 0.273361, 0, 0, 0, 1, -575.115, -89.1109, 51.6172)
+visible = false
+script = ExtResource("12_eo7v0")
+
+[node name="char_idle" type="MeshInstance3D" parent="Character2"]
+transform = Transform3D(1457, 0, 0, 0, 1876, 0, 0, 0, 1, -38.9397, -26.9464, -1)
+mesh = SubResource("QuadMesh_o1uyc")
+
+[node name="bg_idle" type="MeshInstance3D" parent="Character2"]
+transform = Transform3D(1040, 0, 0, 0, 1930, 0, 0, 0, 1, 0, 0, -1.1)
+mesh = SubResource("QuadMesh_ieq7f")
+
+[node name="char_active" type="MeshInstance3D" parent="Character2"]
+transform = Transform3D(1493.58, 0, 0, 0, 2035.86, 0, 0, 0, 1, 21.6262, 41.0889, -1)
+mesh = SubResource("QuadMesh_c0vpm")
+
+[node name="bg_active" type="MeshInstance3D" parent="Character2"]
+transform = Transform3D(1040, 0, 0, 0, 1930, 0, 0, 0, 1, 0, 0, -1.1)
+mesh = SubResource("QuadMesh_q1qdi")
 
 [node name="NextGem" type="Node3D" parent="."]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -562.558, 259.193, 79.754)

@@ -219,12 +219,11 @@ func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary
 		orb_pos.z = side.orb.global_position.z
 		var tween := side.get_tree().create_tween()
 		tween.tween_property(side.orb, "global_position", orb_pos, SURGE_INTERVAL_SECS).set_trans(Tween.TRANS_LINEAR)
-		await tween.finished
+		await side.get_tree().create_timer(SURGE_INTERVAL_SECS).timeout
 
 		count[cell.color_mask] = count.get(cell.color_mask, 0) + 1
 		cell.gem.queue_free()
 		cell.gem = null
-	side.orb.visible = false
 
 	return count
 

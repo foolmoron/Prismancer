@@ -19,6 +19,9 @@ const GRID_ROWS := 8
 @onready var grid := Grid.new(GRID_COLUMNS, GRID_ROWS, self)
 
 @onready var orb := $Orb as Orb
+@onready var character1 := $Character1 as Character
+@onready var character2 := $Character2 as Character
+var character: Character
 
 var gem_next: Gem
 var surging := false
@@ -29,6 +32,19 @@ func _ready() -> void:
 			gem_spawns.append(entry.scene)
 		
 	orb.visible = false
+
+	if player == 0:
+		character1.visible = true
+		character1.process_mode = Node.PROCESS_MODE_INHERIT
+		character2.visible = false
+		character2.process_mode = Node.PROCESS_MODE_DISABLED
+		character = character1
+	else:
+		character1.visible = false
+		character1.process_mode = Node.PROCESS_MODE_DISABLED
+		character2.visible = true
+		character2.process_mode = Node.PROCESS_MODE_INHERIT
+		character = character2
 
 	setup_next_gem()
 	grid.refresh()
@@ -85,6 +101,7 @@ func do_surge(color_idx: int) -> void:
 	if surging:
 		return
 	surging = true
+	character.set_state_active(true)
 	var count := {}
 	match color_idx:
 		0: count = await grid.surge_and_count(Cell.DIR.UP, Vector2i(0, 0))
@@ -93,7 +110,9 @@ func do_surge(color_idx: int) -> void:
 	print(count)
 	await get_tree().create_timer(0.8).timeout
 	grid.kill_lines()
+	orb.visible = false
 	await grid.move_gems()
 	grid.refresh()
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(0.35).timeout
+	character.set_state_active(false)
 	surging = false

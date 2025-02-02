@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2fmlrbafhsgf"
-path.s3tc="res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.s3tc.ctex"
-path.etc2="res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.etc2.ctex"
+uid="uid://xpicuq1jsrie"
+path.s3tc="res://.godot/imported/hacker_atkpose_bg_img.png-b039fff6249bd69dd0a201e93f5cb7d7.s3tc.ctex"
+path.etc2="res://.godot/imported/hacker_atkpose_bg_img.png-b039fff6249bd69dd0a201e93f5cb7d7.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/grid.png"
-dest_files=["res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.s3tc.ctex", "res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.etc2.ctex"]
+source_file="res://Art/hacker_atkpose_bg_img.png"
+dest_files=["res://.godot/imported/hacker_atkpose_bg_img.png-b039fff6249bd69dd0a201e93f5cb7d7.s3tc.ctex", "res://.godot/imported/hacker_atkpose_bg_img.png-b039fff6249bd69dd0a201e93f5cb7d7.etc2.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

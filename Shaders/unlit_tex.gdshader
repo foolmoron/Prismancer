@@ -9,7 +9,11 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel of the screen.
-	vec4 c = texture(tex, UV) * color;
-	EMISSION = c.rgb;
-	ALPHA = c.a;
+	if (UV.x < 0.001 || UV.y < 0.001) {
+		ALPHA = 0.0;
+	} else {
+		vec4 c = texture(tex, UV) * color;
+		EMISSION = c.rgb;
+		ALPHA = c.a;
+	}
 }

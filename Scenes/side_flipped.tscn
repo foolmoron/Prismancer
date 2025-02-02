@@ -22,22 +22,27 @@ transform = Transform3D(400, 0, 0, 0, 640, 0, 0, 0, 1, 220, 30, 0)
 [node name="BoardLabels" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220, -305.902, 0)
 
-[node name="Character" parent="." index="2"]
-transform = Transform3D(-280, 0, 0, 0, 520, 0, 0, 0, 1, 559.93, -90, 21.839)
+[node name="Character1" parent="." index="2"]
+transform = Transform3D(-0.273, 0, 0, 0, 0.273361, 0, 0, 0, 1, 575.115, -89.1109, 51.6172)
+visible = false
 
-[node name="NextGem" parent="." index="3"]
+[node name="Character2" parent="." index="3"]
+transform = Transform3D(-0.273, 0, 0, 0, 0.273361, 0, 0, 0, 1, 581.191, -94.177, 51.6172)
+visible = true
+
+[node name="NextGem" parent="." index="4"]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 562.558, 259.193, 79.754)
 
-[node name="LineRed" parent="." index="4"]
+[node name="LineRed" parent="." index="5"]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 60, -270, 5)
 
-[node name="LineGreen" parent="." index="5"]
+[node name="LineGreen" parent="." index="6"]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 220, -270, 5)
 
-[node name="LineBlue" parent="." index="6"]
+[node name="LineBlue" parent="." index="7"]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 380, -270, 5)
 
-[node name="Orb" parent="." index="7"]
+[node name="Orb" parent="." index="8"]
 transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 1, 197.851, -178.951, 20)
 
 [node name="quadcolor" parent="Orb" index="1"]

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2fmlrbafhsgf"
-path.s3tc="res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.s3tc.ctex"
-path.etc2="res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.etc2.ctex"
+uid="uid://kbgvohvv66j0"
+path.s3tc="res://.godot/imported/dancer_neutral2_img.png-fc1e8c7814c4b029f8141c5dde95fae8.s3tc.ctex"
+path.etc2="res://.godot/imported/dancer_neutral2_img.png-fc1e8c7814c4b029f8141c5dde95fae8.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/grid.png"
-dest_files=["res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.s3tc.ctex", "res://.godot/imported/grid.png-78ae50a518b22416c81002ab51b5507d.etc2.ctex"]
+source_file="res://Art/dancer_neutral2_img.png"
+dest_files=["res://.godot/imported/dancer_neutral2_img.png-fc1e8c7814c4b029f8141c5dde95fae8.s3tc.ctex", "res://.godot/imported/dancer_neutral2_img.png-fc1e8c7814c4b029f8141c5dde95fae8.etc2.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
