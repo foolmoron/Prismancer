@@ -6,7 +6,8 @@ static var is_game_over := false
 @export var side1: Side
 @export var side2: Side
 
-const TIME_SECS := 90.0
+static var TIME_SECS_OPTIONS := [90.0, 180.0, 600.0, 1800.0]
+static var TIME_SECS := 90.0
 @onready var time_left := TIME_SECS
 @onready var time_fill := $Separator/SeparatorFill as Node3D
 

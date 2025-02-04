@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://onqxkjnilams"]
+[gd_scene load_steps=10 format=3 uid="uid://onqxkjnilams"]
 
 [ext_resource type="FontFile" uid="uid://d3r2ywhscqp7y" path="res://Germania_One/GermaniaOne-Regular.ttf" id="1_apl3g"]
 [ext_resource type="Script" path="res://Scenes/loader.gd" id="2_blg38"]
 [ext_resource type="Texture2D" uid="uid://dqc5q011jhd0" path="res://Art/prismancer_logo.png" id="3_2gynv"]
+[ext_resource type="Script" path="res://Scenes/time_button.gd" id="4_v6gj5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sov7a"]
 font = ExtResource("1_apl3g")
@@ -23,6 +24,25 @@ outline_color = Color(0.133333, 0.133333, 0.133333, 1)
 shadow_size = 10
 shadow_color = Color(0.0791031, 0.0791031, 0.0791031, 1)
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f70iu"]
+bg_color = Color(0.31802, 0.31802, 0.31802, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="InputEventKey" id="InputEventKey_7gysf"]
+device = -1
+keycode = 84
+unicode = 116
+
+[sub_resource type="Shortcut" id="Shortcut_80jxm"]
+events = [SubResource("InputEventKey_7gysf")]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -84,8 +104,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -273.0
-offset_bottom = -106.0
+offset_left = -297.0
+offset_top = -282.0
+offset_right = -297.0
+offset_bottom = -115.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Made in 48 hours for RVA Local Game Jam 2025"
@@ -98,10 +120,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 480.0
-offset_top = -235.0
-offset_right = 480.0
-offset_bottom = -68.0
+offset_left = 183.0
+offset_top = -244.0
+offset_right = 183.0
+offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Code: Momin Khan \"foolmoron\"
@@ -136,4 +158,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0.163182, 0)
 
+[node name="TimeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1074.0
+offset_top = 406.0
+offset_right = 1254.0
+offset_bottom = 586.0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_apl3g")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_f70iu")
+action_mode = 0
+shortcut = SubResource("Shortcut_80jxm")
+text = "TAP or [T]
+to change
+game time:
+
+{0} secs"
+script = ExtResource("4_v6gj5")
+
 [connection signal="gui_input" from="TouchDetector" to="Node" method="_on_touch_detector_gui_input"]
+[connection signal="pressed" from="TimeButton" to="TimeButton" method="_on_pressed"]
