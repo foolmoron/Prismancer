@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 
 func game_over() -> void:
 	$EndSound.play()
+	$Music.stop()
 	is_game_over = true
 
 	var side1s := 0
