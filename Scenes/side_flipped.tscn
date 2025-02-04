@@ -34,7 +34,7 @@ transform = Transform3D(-0.273, 0, 0, 0, 0.273361, 0, 0, 0, 1, 581.191, -94.177,
 visible = true
 
 [node name="NextGem" parent="." index="5"]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 562.558, 273.72, 79.754)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 562.558, 260.987, 79.754)
 
 [node name="LineRed" parent="." index="6"]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, 60, -270, 5)

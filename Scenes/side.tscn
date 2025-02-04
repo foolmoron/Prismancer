@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ctx36oft835ud"]
+[gd_scene load_steps=67 format=3 uid="uid://ctx36oft835ud"]
 
 [ext_resource type="Script" path="res://Scenes/side.gd" id="1_317gq"]
 [ext_resource type="Texture2D" uid="uid://d2fmlrbafhsgf" path="res://Art/grid.png" id="2_e6vki"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b6du2yvm8xr1p" path="res://Art/circle_faded.png" id="17_dypse"]
 [ext_resource type="Texture2D" uid="uid://brf7xdun1vc5k" path="res://Art/hacker_neutral_bg_img.png" id="18_7ixr5"]
 [ext_resource type="Texture2D" uid="uid://xpicuq1jsrie" path="res://Art/hacker_atkpose_bg_img.png" id="20_cfmw6"]
+[ext_resource type="Texture2D" uid="uid://5iwvb5bx5h3m" path="res://Art/nextbox_border_img.png" id="22_gyqmy"]
 [ext_resource type="AudioStream" uid="uid://bg2tkurmbn74t" path="res://Sound/Bubble Single WAV/Bubble Singles-001.wav" id="27_2ecr0"]
 [ext_resource type="AudioStream" uid="uid://hioienefksr5" path="res://Sound/Bubble Single WAV/Bubble Singles-002.wav" id="28_0npo0"]
 [ext_resource type="AudioStream" uid="uid://bmvqkasvhkakw" path="res://Sound/Bubble Single WAV/Bubble Singles-003.wav" id="29_42yed"]
@@ -430,7 +431,13 @@ transform = Transform3D(1040, 0, 0, 0, 1930, 0, 0, 0, 1, 0, 0, -1.1)
 mesh = SubResource("QuadMesh_q1qdi")
 
 [node name="NextGem" type="Node3D" parent="."]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -562.558, 273.72, 79.754)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -562.558, 262.565, 79.754)
+
+[node name="Box" type="Sprite3D" parent="NextGem"]
+transform = Transform3D(1.23209, 0, 0, 0, 1.23209, 0, 0, 0, 1, 0, 0, -79)
+pixel_size = 0.2983
+texture = ExtResource("22_gyqmy")
+region_rect = Rect2(135.359, 31, 223, 339)
 
 [node name="LineRed" parent="." instance=ExtResource("11_sxmu3")]
 transform = Transform3D(20, 0, 0, 0, 40, 0, 0, 0, 1, -380, -270, 5)

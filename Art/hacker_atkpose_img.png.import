@@ -3,27 +3,25 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nqmrn5x6quaq"
-path.s3tc="res://.godot/imported/hacker_atkpose_img.png-0cf3d53e354d70136f59775e52ebd994.s3tc.ctex"
-path.etc2="res://.godot/imported/hacker_atkpose_img.png-0cf3d53e354d70136f59775e52ebd994.etc2.ctex"
+path="res://.godot/imported/hacker_atkpose_img.png-0cf3d53e354d70136f59775e52ebd994.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Art/hacker_atkpose_img.png"
-dest_files=["res://.godot/imported/hacker_atkpose_img.png-0cf3d53e354d70136f59775e52ebd994.s3tc.ctex", "res://.godot/imported/hacker_atkpose_img.png-0cf3d53e354d70136f59775e52ebd994.etc2.ctex"]
+dest_files=["res://.godot/imported/hacker_atkpose_img.png-0cf3d53e354d70136f59775e52ebd994.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
