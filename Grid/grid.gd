@@ -2,7 +2,7 @@ class_name Grid
 extends Resource
 
 const TIER2 := 5
-const TIER3 := 10
+const TIER3 := 12
 
 var columns: int
 var rows: int
@@ -247,15 +247,15 @@ func surge_and_count(initial_dir: Cell.DIR, initial_pos: Vector2i) -> Dictionary
 			Cell.COLOR.WHITE:
 				prefix = "WHT"
 		side.score_texts[cell.color_mask].text = "%s: %s" % [prefix, count[cell.color_mask]]
-		if count[cell.color_mask] >= TIER2:
+		if count[cell.color_mask] >= TIER3:
+			side.score_texts[cell.color_mask].text += " x 3"
+		elif count[cell.color_mask] >= TIER2:
 			side.score_texts[cell.color_mask].text += " x 2"
-		elif count[cell.color_mask] >= TIER3:
-			side.score_texts[cell.color_mask].text += " x 4"
 
-		if count[cell.color_mask] >= TIER2:
-			side.get_node("Pop2Sound").play()
-		elif count[cell.color_mask] >= TIER3:
+		if count[cell.color_mask] >= TIER3:
 			side.get_node("Pop3Sound").play()
+		elif count[cell.color_mask] >= TIER2:
+			side.get_node("Pop2Sound").play()
 		else:
 			side.get_node("Pop1Sound").play()
 

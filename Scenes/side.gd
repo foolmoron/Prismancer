@@ -147,7 +147,7 @@ func do_surge(color_idx: int) -> void:
 			if val >= Grid.TIER2:
 				val = val * 2
 			elif val >= Grid.TIER3:
-				val = val * 4
+				val = val * 3
 			if key & Cell.COLOR.RED != 0:
 				score_red += val
 			if key & Cell.COLOR.GREEN != 0:
